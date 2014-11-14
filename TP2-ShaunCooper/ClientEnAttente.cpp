@@ -13,7 +13,7 @@
 
 ClientEnAttente::ClientEnAttente()
 {
-	SetPrecedent(nullptr);   // 0 indique qu'on ne connait pas l'adresse; equivaut à null
+	SetPrecedent(nullptr);   // nullptr indique qu'on ne connait pas l'adresse; equivaut à null
 	SetSuivant(nullptr);
 	SetNom("");
 }
@@ -24,7 +24,7 @@ ClientEnAttente::ClientEnAttente(string nom, int nbDePersonnes, int sectionsChoi
 		SetNom(nom);
 		SetSection(sectionsChoisie);
 		SetNombreDePersonnes(nbDePersonnes);
-		SetPrecedent(nullptr);   // 0 indique qu'on ne connait pas l'adresse; equivaut à null
+		SetPrecedent(nullptr);   // nullptr indique qu'on ne connait pas l'adresse; equivaut à null
 		SetSuivant(nullptr);
 	}
 	else // Le choix est invalide, on lance une exception
