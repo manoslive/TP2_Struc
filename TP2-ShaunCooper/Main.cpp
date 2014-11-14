@@ -28,38 +28,9 @@ void AfficherMenu()
 		 << "5. Afficher la file d'attente en entier" << endl
 		 << "6. Quitter le programme" << endl;
 }
-void EffectuerChoix(int choix, FileAttente& maFile,bool& quitter)
-{
-	switch (choix)
-	{
-	case 1:
-		AjouterClient(maFile);
-		break;
-	case 2:
-		AssignerTable(maFile);
-		break;
-	case 3:
-		ClientPart(maFile);
-		break;
-	case 4:
-		maFile.AfficherClient(maFile);
-		break;
-	case 5:
-		maFile.Afficher(cout, maFile);
-		break;
-	case 6:
-		if (maFile.GetNbGroupes() != 0)
-			quitter = maFile.Quitter();
-		else
-			quitter = true;
-		break;
-	default:
-		cout << "Entrez un des choix suivants.." << endl;
-	}
-}
+
 void AfficherChoixSection()
 {
-	//system("cls");
 	cout << "------------------------ -------------------------" << endl
 		 << "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
 		 << "--------------------------------------------------" << endl
@@ -88,6 +59,7 @@ void AjouterClient(FileAttente& maFile)
 	cout << endl;
 	AfficherChoixSection();
 	cin >> choixSection;
+	system("cls");
 	ClientEnAttente monClient(nom, nbPersonnes, choixSection);
 	maFile.Ajouter(monClient);
 }
@@ -137,6 +109,36 @@ void MessageQuitter(FileAttente & maFile)
 		<< "Nombre de groupes assignés à une table: " << maFile.GetNbGroupesAssignes() << endl
 		<< "Nombre de personnes assignées à une table: " << maFile.GetNbPersonnesAssignes() << endl
 		<< "Nombre de groupes présents dans la file: " << maFile.GetNbGroupes() << endl;
+}
+
+void EffectuerChoix(int choix, FileAttente& maFile, bool& quitter)
+{
+	switch (choix)
+	{
+	case 1:
+		AjouterClient(maFile);
+		break;
+	case 2:
+		AssignerTable(maFile);
+		break;
+	case 3:
+		ClientPart(maFile);
+		break;
+	case 4:
+		maFile.AfficherClient(maFile);
+		break;
+	case 5:
+		maFile.Afficher(cout, maFile);
+		break;
+	case 6:
+		if (maFile.GetNbGroupes() != 0)
+			quitter = maFile.Quitter();
+		else
+			quitter = true;
+		break;
+	default:
+		cout << "Entrez un des choix suivants.." << endl;
+	}
 }
 
 int main()
