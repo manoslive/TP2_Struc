@@ -1,10 +1,10 @@
 //----------------------------------------------------------------------------//
-//  TP2 - File d'attente													    //
-//	Shaun Cooper & Emmanuel Beloin										    //
-//	Créé le : 10-11-14													    //
-//	Dernière modification : 13-11-14									        //
-//	Main.cpp															    //
-//	Programme qui permet de gérer un file d'attente d'un restaurent         //
+//  TP2 - File d'attente													  //
+//	Shaun Cooper & Emmanuel Beloin										      //
+//	Créé le : 10-11-14													      //
+//	Dernière modification : 13-11-14									      //
+//	Main.cpp															      //
+//	Programme qui permet de gérer un file d'attente d'un restaurent           //
 //----------------------------------------------------------------------------//
 // À faire : - Assigner table (choix #2) ne fonctionne pas
 
@@ -76,6 +76,8 @@ void AssignerTable(FileAttente& maFile)
 	AfficherChoixSection();
 	cin  >> section;
 	cout << maFile.Retirer(nbPlacesTable, section).nom_ << "à été retiré" << endl;  ////ne fonctionne pas
+	maFile.SetNbPersonnes(maFile.GetNbPersonnes() + nbPlacesTable);
+	maFile.SetNbGroupes(maFile.GetNbGroupesAssignes() + 1);
 }
 void ClientPart(FileAttente& maFile)
 {
@@ -100,8 +102,8 @@ void MessageQuitter(FileAttente & maFile)
 	cout << "--------------------------------" << endl
 		 << "¦   Récapitulatif de session   ¦" << endl
 		 << "--------------------------------" << endl
-		 << endl
-		 << maFile.
+		 << endl;
+		 // << maFile.
 }
 
 int main()

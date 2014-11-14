@@ -23,6 +23,8 @@ class FileAttente
 	//--- Attributs
 	int nbGroupes_;
 	int nbPersonnes_;
+	int nbGroupesAssignes_;
+	int nbPersonnesAssignes_;
 
 public:
 	//--- Constructeur
@@ -31,8 +33,12 @@ public:
 	//--- Accesseurs / mutateurs
 	void SetNbGroupes(int nbGroupes);
 	void SetNbPersonnes(int nbPersonnes);
+	void SetNbGroupesAssignes(int nbGroupesAssignes);
+	void SetNbPersonnesAssignes(int nbPersonnesAssignes);
 	int  GetNbGroupes() const { return nbGroupes_; };
 	int  GetNbPersonnes() const { return nbPersonnes_; };
+	int  GetNbGroupesAssignes() const { return nbGroupesAssignes_; };
+	int  GetNbPersonnesAssignes() const { return nbPersonnesAssignes_; };
 
 	//--- Accesseurs / mutateurs de pointeurs
 	ClientEnAttente* GetPremier() const;
