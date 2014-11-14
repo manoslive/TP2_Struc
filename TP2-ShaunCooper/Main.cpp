@@ -6,7 +6,7 @@
 //	Main.cpp                                                                //
 //	Programme qui permet de gérer un file d'attente d'un restaurent         //
 //----------------------------------------------------------------------------//
-// À faire : - Assigner table (choix #2) ne fonctionne pas
+// À faire : - Mettre des commentaires
 
 #include "ClientEnAttente.h"
 #include "FileAttente.h"

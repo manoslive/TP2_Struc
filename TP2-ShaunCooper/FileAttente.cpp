@@ -6,7 +6,7 @@
 //	FileAttente.cpp														    //
 //	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente //
 //----------------------------------------------------------------------------//
-// À faire : - Arranger la recherche dans Retirer
+// À faire : - Mettre des commentaires
 
 #include "FileAttente.h"
 #include <sstream>

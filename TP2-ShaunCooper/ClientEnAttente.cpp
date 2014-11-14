@@ -7,6 +7,7 @@
 //	Definition d'un ClientEnAttente. Essentiellement des					//
 //  mutateurs et accesseurs													//
 //----------------------------------------------------------------------------//
+// À faire : - Mettre des commentaires
 
 #include "ClientEnAttente.h"
 
