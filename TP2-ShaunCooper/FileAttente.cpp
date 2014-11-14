@@ -6,9 +6,8 @@
 //	FileAttente.cpp														    //
 //	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente //
 //----------------------------------------------------------------------------//
-// À faire : - Terminer GetClient
-//			 - Arranger la recherche dans Retirer
-//			 - Ajouter l'affichage de la section dans Afficher
+// À faire : - Arranger la recherche dans Retirer
+
 
 
 #include "FileAttente.h"
@@ -16,8 +15,8 @@
 
 FileAttente::FileAttente()
 {
-	SetPremier(0);
-	SetDernier(0);
+	SetPremier(nullptr);
+	SetDernier(nullptr);
 	SetNbGroupes(0);
 	SetNbPersonnes(0);
 }
