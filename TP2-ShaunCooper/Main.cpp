@@ -1,10 +1,10 @@
 //----------------------------------------------------------------------------//
-//  TP2 - File d'attente													  //
-//	Shaun Cooper & Emmanuel Beloin										      //
-//	Créé le : 10-11-14													      //
-//	Dernière modification : 13-11-14									      //
-//	Main.cpp															      //
-//	Programme qui permet de gérer un file d'attente d'un restaurent           //
+//  TP2 - File d'attente													    //
+//	Shaun Cooper & Emmanuel Beloin										    //
+//	Créé le : 10-11-14													    //
+//	Dernière modification : 13-11-14									        //
+//	Main.cpp															    //
+//	Programme qui permet de gérer un file d'attente d'un restaurent         //
 //----------------------------------------------------------------------------//
 // À faire : - Assigner table (choix #2) ne fonctionne pas
 
@@ -50,6 +50,7 @@ void AjouterClient(FileAttente& maFile)
 	int choixSection=0;
 	string nom;
 	int nbPersonnes = 0;
+	system("cls");
 	cout << "------------------------ " << endl
 		 << "¦    Ajout de client    ¦" << endl
 		 << "-------------------------" << endl
@@ -84,6 +85,7 @@ void ClientPart(FileAttente& maFile)
 {
 	string nomClientRetirer;
 	int nbPersonnes = 0;
+	system("cls");
 	cout << "------------------------ " << endl
 		 << "¦   Retrait de client   ¦" << endl
 		 << "-------------------------" << endl
@@ -100,6 +102,7 @@ void ClientPart(FileAttente& maFile)
 
 void MessageQuitter(FileAttente & maFile)
 {
+	system("cls");
 	cout << "--------------------------------" << endl
 		<< "¦   Récapitulatif de session   ¦" << endl
 		<< "--------------------------------" << endl

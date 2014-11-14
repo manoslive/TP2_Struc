@@ -220,6 +220,7 @@ void FileAttente::Afficher(ostream & out, FileAttente & maFile)
 	ClientEnAttente *clientAfficher = GetPremier();
 	if (clientAfficher != nullptr)
 	{
+		system("cls");
 		cout << "--------------------------- " << endl
 			<< "¦  Voici la file d'attente ¦" << endl
 			<< "-----------------------------" << endl;
