@@ -6,6 +6,7 @@
 //	ClientEnAttente.h														//
 //	Declaration d'un ClientEnAttente.										//
 //----------------------------------------------------------------------------//
+// À faire: - Mettre des commentaires détaillés
 
 #ifndef _CLIENTENATTENTE_H_
 #define _CLIENTENATTENTE_H_
@@ -22,11 +23,12 @@ class ClientEnAttente
 public:
 	struct Client
 	{
+		//--- Attributs de la structure Client
 		string nom_;			// nom de la personne; c'est notre élément d'information
 		int nombreDePersonnes;	// Nombre de personnes dans le groupe
 		int section;			// Nombre représentant la/les section(s) choisie(s)
 	};
-	//--- 
+	//--- Objet de la classe Client
 	Client InfoClient;
 
    //--- Constructeurs
