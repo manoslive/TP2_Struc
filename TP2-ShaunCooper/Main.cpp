@@ -1,9 +1,9 @@
 //----------------------------------------------------------------------------//
-//  TP2 - File d'attente													    //
-//	Shaun Cooper & Emmanuel Beloin										    //
-//	Créé le : 10-11-14													    //
-//	Dernière modification : 13-11-14									        //
-//	Main.cpp															    //
+//  TP2 - File d'attente	                                                    //
+//	Shaun Cooper & Emmanuel Beloin                                          //
+//	Créé le : 10-11-14                                                      //
+//	Dernière modification : 13-11-14                                        //
+//	Main.cpp                                                                //
 //	Programme qui permet de gérer un file d'attente d'un restaurent         //
 //----------------------------------------------------------------------------//
 // À faire : - Assigner table (choix #2) ne fonctionne pas
