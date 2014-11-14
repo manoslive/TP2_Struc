@@ -51,6 +51,6 @@ public:
 	//--- Accesseurs
     string GetNom() const;
 	int    GetNombreDePersonnes() const;
-	int    GetSection();
+	int    GetSection() const;
 };
 #endif

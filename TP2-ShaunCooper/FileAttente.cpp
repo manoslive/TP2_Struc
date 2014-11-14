@@ -145,7 +145,6 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 			clientAEnlever = clientAEnlever->GetSuivant();
 		}
 	}
-
 	if (!trouver)
 		throw exception("Aucun match"); // S'il ne trouve pas de match
 
