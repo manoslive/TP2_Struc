@@ -31,7 +31,6 @@ void AfficherMenu()
 
 void AfficherChoixSection()
 {
-	//system("cls");
 	cout << "------------------------ -------------------------" << endl
 		 << "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
 		 << "--------------------------------------------------" << endl
@@ -60,6 +59,7 @@ void AjouterClient(FileAttente& maFile)
 	cout << endl;
 	AfficherChoixSection();
 	cin >> choixSection;
+	system("cls");
 	ClientEnAttente monClient(nom, nbPersonnes, choixSection);
 	maFile.Ajouter(monClient);
 }
