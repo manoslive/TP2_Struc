@@ -149,7 +149,7 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 	if (!trouver)
 		throw exception("Aucun match"); // S'il ne trouve pas de match
 
-	ClientEnAttente unClient(clientAEnlever->GetNom(), clientAEnlever->GetNombreDePersonnes(), clientAEnlever->GetSection()); // Copie des informations dans un client qui sera effacé lors de la fermeture de la méthode
+	ClientEnAttente unClient(meilleurChoix->GetNom(), meilleurChoix->GetNombreDePersonnes(), meilleurChoix->GetSection()); // Copie des informations dans un client qui sera effacé lors de la fermeture de la méthode
 
 	Retirer(unClient.GetNom(), unClient.GetNombreDePersonnes()); // Ici on appelle la méthode qui va retirer le client de la file d'attente
 	// Je vais tenter d'appeler la méthode retirer avec bool au lieu de faire le delete et le count de groupe ici - manu
