@@ -7,7 +7,6 @@
 //	Déclaration d'une file d'attente qui sert à gérer plusieurs 			//
 //  ClientEnAttente															//
 //----------------------------------------------------------------------------//
-// À faire : - Mettre des commentaires détaillés
 
 #pragma once
 #include "ClientEnAttente.h"
@@ -98,31 +97,34 @@ public:
 	/////////////////////////////////////////////////////////////////
 	string  SectionEnString(int section);
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	EstVide
+	//	Intrants:	Aucun		
+	//  Extrants:	Nous renvoie true s'il est bel et bien vide
+	//	Description: Vérifie si la file d'attente est vide
 	/////////////////////////////////////////////////////////////////
 	bool	EstVide();
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	ObtenirNbGroupes
+	//	Intrants:	Aucun		
+	//  Extrants:   Le nombre de groupes(int)
+	//	Description: Additionne les groupes et retourne ce nombre
 	/////////////////////////////////////////////////////////////////
 	int		ObtenirNbGroupes();
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	ObtenirNbPersonnes
+	//	Intrants:	 Aucun		
+	//  Extrants:	 le nombre de personnes(int)
+	//	Description: Additionne les personnes de tous les groupes
+	//				 et retourne ce nombre
 	/////////////////////////////////////////////////////////////////
 	int		ObtenirNbPersonnes();
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	Quitter
+	//	Intrants:	 Aucun		
+	//  Extrants:	 un bool qui nous dit si on veut quitter ou non
+	//	Description: Si la file d'attente contient un groupe
+	//				 nous demandons à l'usager s'il veut bel et bien
+	//				 quitter
 	/////////////////////////////////////////////////////////////////
 	bool    Quitter();
 };
