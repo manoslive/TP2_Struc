@@ -19,10 +19,10 @@ void AfficherStringLine()
 void AfficherMenu()
 {
 	// AfficherStringLine();
-	cout << "------------------------ ------" << endl
+	cout << "-------------------------------" << endl
 		 << "¦    Restaurant chez Tunak    ¦" << endl
 		 << "-------------------------------" << endl
-		 << "Faites un choix parmi les suivants" << endl
+		 << "Faites un choix parmi les suivants:" << endl
 		 << "-----------------------------------" << endl
 		 << "1. Ajouter un client dans la file" << endl
 		 << "2. Assigner une table" << endl
