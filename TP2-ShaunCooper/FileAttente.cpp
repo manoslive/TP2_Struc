@@ -151,8 +151,8 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 	ClientEnAttente unClient(meilleurChoix->GetNom(), meilleurChoix->GetNombreDePersonnes(), meilleurChoix->GetSection()); // Copie des informations dans un client qui sera effacé lors de la fermeture de la méthode
 
 	Retirer(unClient.GetNom(), unClient.GetNombreDePersonnes()); // Ici on appelle la méthode qui va retirer le client de la file d'attente
-	maFile.SetNbPersonnes(maFile.GetNbPersonnes() + nbPlacesDeLaTable);
-	maFile.SetNbGroupes(maFile.GetNbGroupesAssignes() + 1);
+	maFile.SetNbPersonnesAssignes(maFile.GetNbPersonnesAssignes() + nbPlacesDeLaTable);
+	maFile.SetNbGroupesAssignes(maFile.GetNbGroupesAssignes() + 1);
 	return unClient.InfoClient;
 }
 
