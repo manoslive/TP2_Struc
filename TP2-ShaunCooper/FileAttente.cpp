@@ -120,6 +120,8 @@ void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 		GetDernier()->SetSuivant(pNouveau);
 		SetDernier(pNouveau);
 	}
+	SetNbGroupes(GetNbGroupes() + 1);
+	SetNbPersonnes(GetNbPersonnes() + clientAMettreEnFile.GetNombreDePersonnes());
 }
 
 ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionDeLaTable)
@@ -132,9 +134,10 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 
 	for (int i = nbPlacesDeLaTable; i > 0 && trouver != false; i--)
 	{
-		clientAEnlever = clientAEnlever->GetSuivant();
 		if (clientAEnlever->GetNombreDePersonnes() != i && clientAEnlever->GetSection() != sectionDeLaTable)
 			trouver = true;
+
+		clientAEnlever = clientAEnlever->GetSuivant();
 	}
 
 	if (!trouver)

@@ -102,10 +102,9 @@ void MessageQuitter(FileAttente & maFile)
 	cout << "--------------------------------" << endl
 		<< "¦   Récapitulatif de session   ¦" << endl
 		<< "--------------------------------" << endl
-		<< endl
-		<< "Nombre de groupes assignés à une table: " << maFile.GetNbGroupesAssignes()
-		<< "Nombre de personnes assignées à une table: " << maFile.GetNbPersonnesAssignes()
-		<< "Nombre de groupes présents dans la file: " << maFile.GetNbGroupes();
+		<< "Nombre de groupes assignés à une table: " << maFile.GetNbGroupesAssignes() << endl
+		<< "Nombre de personnes assignées à une table: " << maFile.GetNbPersonnesAssignes() << endl
+		<< "Nombre de groupes présents dans la file: " << maFile.GetNbGroupes() << endl;
 }
 
 int main()
