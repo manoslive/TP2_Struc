@@ -197,9 +197,9 @@ void FileAttente::Afficher(ostream & out, FileAttente & maFile)
 
 void FileAttente::AfficherClient(FileAttente& maFile) const
 {
-	int rang = 0; // Le rang dans la file d'attente
+	int rang = 1; // Le rang dans la file d'attente
 
-	cout << "Donnez la position dans la file du client dont vous voulez de l'information";
+	cout << "Donnez la position dans la file du client dont vous voulez de l'information" << endl;
 	cin  >> rang;
 	cout << "Le client: " << "#" << rang << " est " << maFile.GetClient(rang);
 
@@ -207,21 +207,22 @@ void FileAttente::AfficherClient(FileAttente& maFile) const
 
 string FileAttente::GetClient(int indice)
 {
-	ClientEnAttente * pBalayage = GetPremier();
+	ClientEnAttente * clientARetourner = GetPremier();
 	int rang = 1;
-	string Client;
+	string client;
 	stringstream ss;
 
-	while (pBalayage != nullptr && rang != indice)
+	while (clientARetourner != nullptr && rang != indice)
 	{
-		pBalayage = pBalayage->GetSuivant();
+		clientARetourner = clientARetourner->GetSuivant();
 		rang++;
 	}
-	if (pBalayage == nullptr)
+	if (clientARetourner == nullptr)
 	{
-		// À terminer
+		throw exception("Erreur: La file d'attente est vide!");
 	}
-	ss << pBalayage->GetNom() << (pBalayage->GetNombreDePersonnes()) << (pBalayage->GetSection());
 
-	return Client;
+	ss << clientARetourner->GetNom() << (clientARetourner->GetNombreDePersonnes()) << (clientARetourner->GetSection()) << endl;
+	client = ss.str();
+	return client;
 }

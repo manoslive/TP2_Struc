@@ -54,7 +54,7 @@ void AjouterClient(FileAttente& maFile)
 		 << "-------------------------" << endl
 		 << "Donnez le nom du client: " << endl;
 	cin  >> nom;
-	cout << "Donnez le nombre de personne dans ce groupe: "; << endl
+	cout << "Donnez le nombre de personne dans ce groupe: " << endl;
 	cin  >> nbPersonnes;
 	cout << endl;
 	AfficherChoixSection();
@@ -120,7 +120,7 @@ int main()
 				maFile.AfficherClient(maFile);
 				break;
 			case 5:
-				maFile.Afficher(cout);
+				maFile.Afficher(cout, maFile);
 				//AfficherStringLine();
 				break;
 			case 6:
@@ -129,7 +129,6 @@ int main()
 			default:
 				cout << "Entrez un des choix suivants.." << endl;
 			}
-
 		} while (!quitter);
 	}
 	catch (exception e)
