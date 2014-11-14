@@ -74,7 +74,7 @@ int ClientEnAttente::GetNombreDePersonnes() const
 {
 	return InfoClient.nombreDePersonnes;
 }
-int ClientEnAttente::GetSection()
+int ClientEnAttente::GetSection() const
 {
 	return InfoClient.section;
 }
