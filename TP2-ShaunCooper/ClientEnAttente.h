@@ -1,10 +1,10 @@
 //----------------------------------------------------------------------------//
-//  TP2 - File d'attente													    //
-//	Shaun Cooper & Emmanuel Beloin										    //
-//	Créé le : 10-11-14													    //
-//	Dernière modification : 13-11-14									        //
-//	ClientEnAttente.h														//
-//	Declaration d'un ClientEnAttente.										//
+//  TP2 - File d'attente													  //
+//	Shaun Cooper & Emmanuel Beloin										      //
+//	Créé le : 10-11-14													      //
+//	Dernière modification : 13-11-14									      //
+//	ClientEnAttente.h														  //
+//	Declaration d'un ClientEnAttente.										  //
 //----------------------------------------------------------------------------//
 // À faire: - Mettre des commentaires détaillés
 
