@@ -13,9 +13,9 @@
 
 FileAttente::FileAttente()
 {
-	SetPremier(nullptr);
+	SetPremier(nullptr); // Le pointeur est initialisé à nul
 	SetDernier(nullptr);
-	SetNbGroupes(0);
+	SetNbGroupes(0);  // Initialisation à 0 pour la construction
 	SetNbPersonnes(0);
 	SetNbGroupesAssignes(0);
 	SetNbPersonnesAssignes(0);
@@ -28,15 +28,15 @@ bool FileAttente::EstVide()
 
 int FileAttente::ObtenirNbGroupes()
 {
-	ClientEnAttente *pTemporaire = GetPremier();
-	int nbGroupes = 0;
+	ClientEnAttente * leGroupe = GetPremier(); // On pointe sur le premier groupe de la file
+	int nbPersonnesDansGroupes = 0;
 
-	while (pTemporaire != nullptr)
+	while (leGroupe != nullptr) // S'il y a un groupe
 	{
-		nbGroupes++;
-		pTemporaire = pTemporaire->GetSuivant();
+		nbPersonnesDansGroupes++; // C'est ici que l'on compte
+		leGroupe = leGroupe->GetSuivant(); // On passe au groupe suivant
 	}
-	return nbGroupes;
+	return nbPersonnesDansGroupes;
 }
 
 void FileAttente::SetPremier(ClientEnAttente *pPremier)
@@ -61,35 +61,35 @@ ClientEnAttente* FileAttente::GetDernier() const
 
 void FileAttente::SetNbGroupes(int nbGroupes)
 {
-	if (nbGroupes >= 0)
+	if (nbGroupes >= 0) // Si le nombre de groupe est valide
 		nbGroupes_ = nbGroupes;
 	else
-		throw exception("Erreur: Nombre de groupes invalides!");
+		throw exception("Erreur: Nombre de groupes invalides!"); // Sinon, on lance une exception
 
 }
 
 void FileAttente::SetNbPersonnes(int nbPersonnes)
 {
-	if (nbPersonnes >= 0)
+	if (nbPersonnes >= 0) // Si le nombre de personnes est valide
 		nbPersonnes_ = nbPersonnes;
 	else
-		throw exception("Erreur: Nombre de personnes invalides dans le groupe!");
+		throw exception("Erreur: Nombre de personnes invalides dans le groupe!"); // Sinon, on lance une exception
 }
 
 void FileAttente::SetNbGroupesAssignes(int nbGroupesAssignes)
 {
-	if (nbGroupesAssignes >= 0)
+	if (nbGroupesAssignes >= 0) // Si le nombre de groupe assignées est valide
 		nbGroupesAssignes_ = nbGroupesAssignes;
 	else
-		throw exception("Erreur: Nombre de groupes assignés invalide!");
+		throw exception("Erreur: Nombre de groupes assignés invalide!"); // Sinon, on lance une exception
 }
 
 void FileAttente::SetNbPersonnesAssignes(int nbPersonnesAssignes)
 {
-	if (nbPersonnesAssignes >= 0)
+	if (nbPersonnesAssignes >= 0) // Si le nombre de personnes assignées
 		nbPersonnesAssignes_ = nbPersonnesAssignes;
 	else
-		throw exception("Erreur: Nombre de personnes assignés invalide!");
+		throw exception("Erreur: Nombre de personnes assignés invalide!"); // Sinon, on lance une exception
 }
 
 int FileAttente::ObtenirNbPersonnes()
