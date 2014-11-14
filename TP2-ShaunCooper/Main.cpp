@@ -34,6 +34,7 @@ void AfficherMenu()
 }
 void AfficherChoixSection()
 {
+	system("cls");
 	cout << "------------------------ -------------------------" << endl
 		 << "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
 		 << "--------------------------------------------------" << endl
