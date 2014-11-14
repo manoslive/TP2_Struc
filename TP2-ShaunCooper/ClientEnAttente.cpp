@@ -23,8 +23,8 @@ ClientEnAttente::ClientEnAttente(string nom, int nbDePersonnes, int sectionsChoi
 		SetNom(nom);
 		SetSection(sectionsChoisie);
 		SetNombreDePersonnes(nbDePersonnes);
-		SetPrecedent(0);   // 0 indique qu'on ne connait pas l'adresse; equivaut à null
-		SetSuivant(0);
+		SetPrecedent(nullptr);   // 0 indique qu'on ne connait pas l'adresse; equivaut à null
+		SetSuivant(nullptr);
 	}
 	else
 		cout << "La section choisie est invalide. Choix: salle(0), terrasse(1), terrasseFumeur(2)" << endl;
