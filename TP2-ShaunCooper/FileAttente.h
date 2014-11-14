@@ -1,9 +1,12 @@
-/*
-	Shaun Cooper
-	TP2 - File d'attente
-	FileAttente.h
-	Déclaration d'une file d'attente qui sert à gérer plusieur ClientEnAttente
-*/
+//----------------------------------------------------------------------------//
+//  TP2 - File d'attente													    //
+//	Shaun Cooper & Emmanuel Beloin										    //
+//	Créé le : 10-11-14													    //
+//	Dernière modification : 13-11-14									        //
+//	FileAttente.h															//
+//	Déclaration d'une file d'attente qui sert à gérer plusieurs 			//
+//  ClientEnAttente															//
+//----------------------------------------------------------------------------//
 
 #pragma once
 #include "ClientEnAttente.h"

@@ -1,9 +1,11 @@
-/*
-	Shaun Cooper - Emmanuel Beloin
-	TP2 - File d'attente
-	Main.cpp
-	Programme qui permet de gérer un file d'attente d'un restaurent
-*/
+//----------------------------------------------------------------------------//
+//  TP2 - File d'attente													    //
+//	Shaun Cooper & Emmanuel Beloin										    //
+//	Créé le : 10-11-14													    //
+//	Dernière modification : 13-11-14									        //
+//	Main.cpp															    //
+//	Programme qui permet de gérer un file d'attente d'un restaurent         //
+//----------------------------------------------------------------------------//
 
 #include "ClientEnAttente.h"
 #include "FileAttente.h"

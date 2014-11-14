@@ -1,3 +1,13 @@
+//----------------------------------------------------------------------------//
+//  TP2 - File d'attente													    //
+//	Shaun Cooper & Emmanuel Beloin										    //
+//	Créé le : 10-11-14													    //
+//	Dernière modification : 13-11-14									        //
+//	ClientEnAttente.h														//
+//	Declaration d'un ClientEnAttente.										//
+//----------------------------------------------------------------------------//
+
+
 // Declaration d'un noeud. En l'occurence, le
 // noeud ne contient qu'une string comme element
 // d'information

@@ -1,9 +1,12 @@
-/*
-	Shaun Cooper
-	TP2 - File d'attente
-	FileAttente.cpp
-	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente
-	*/
+//----------------------------------------------------------------------------//
+//  TP2 - File d'attente													    //
+//	Shaun Cooper & Emmanuel Beloin										    //
+//	Créé le : 10-11-14													    //
+//	Dernière modification : 13-11-14									        //
+//	FileAttente.cpp														    //
+//	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente //
+//----------------------------------------------------------------------------//
+
 #include "FileAttente.h"
 #include <sstream>
 

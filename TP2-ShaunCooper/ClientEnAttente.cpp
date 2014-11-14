@@ -1,11 +1,13 @@
-// Definition d'un ClientEnAttente. Essentiellement des
-// mutateurs et accesseurs
-//
-// Modifier noeud à ClientEnAttente
-// 
-// par Pierre Prud'homme, octobre 2014
-// modifier par Shaun Cooper, novembre 2014
-//-------------------------------------------------
+//----------------------------------------------------------------------------//
+//  TP2 - File d'attente													    //
+//	Shaun Cooper & Emmanuel Beloin										    //
+//	Créé le : 10-11-14													    //
+//	Dernière modification : 13-11-14									        //
+//	ClientEnAttente.cpp														//
+//	Definition d'un ClientEnAttente. Essentiellement des					//
+//  mutateurs et accesseurs													//
+//----------------------------------------------------------------------------//
+
 #include "ClientEnAttente.h"
 
 ClientEnAttente::ClientEnAttente()
