@@ -13,6 +13,24 @@
 #include <iostream>
 using namespace std;
 
+bool IsAlpha(string s)
+{
+	char c;
+
+	// Accéder chaque caractère du string une lettre à la fois
+	for (unsigned int i = 0; i < s.length(); i++)
+	{
+		c = s.at(i);         // Get le char du string
+
+		// Si ce caractère n'est pas entre a et z ou bien A ou Z
+		if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')))
+		{
+			cout << "Erreur. Entrez des lettres pour le nom du client" << std::endl;
+			return false;
+		}
+	}
+	return true;
+}
 void AfficherMenu()
 {
 	// AfficherStringLine();
@@ -53,6 +71,9 @@ void AjouterClient(FileAttente& maFile)
 		 << "-------------------------" << endl
 		 << "Donnez le nom du client: " << endl;
 	cin  >> nom;
+	while (!IsAlpha(nom))
+		cin >> nom;
+
 	cout << "Donnez le nombre de personne dans ce groupe: " << endl;
 	cin  >> nbPersonnes;
 	system("cls");
@@ -90,6 +111,8 @@ void ClientPart(FileAttente& maFile)
 		 << "-------------------------" << endl
 		 << "Nom du client à retirer: " << endl;
 	cin  >> nomClientRetirer;
+	while(!IsAlpha(nomClientRetirer))
+		cin >> nomClientRetirer;
 	cout << "Nombre de personnes?" << endl;
 	cin  >> nbPersonnes;
 	system("cls");
@@ -140,6 +163,7 @@ void EffectuerChoix(int choix, FileAttente& maFile, bool& quitter)
 		cout << "Entrez un des choix suivants.." << endl;
 	}
 }
+
 
 int main()
 {
