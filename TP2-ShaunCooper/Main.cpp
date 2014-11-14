@@ -13,6 +13,12 @@
 #include <iostream>
 using namespace std;
 
+//////////////////////////////////////////////////////////////////////////////////
+//	IsAlpha
+//	Intrants: s(string)
+//  Extrants: bool
+//	Description: Permet de vérifier si le string entré est constitué de lettres alphabétiques
+//////////////////////////////////////////////////////////////////////////////////
 bool IsAlpha(string s)
 {
 	char c;
@@ -31,6 +37,12 @@ bool IsAlpha(string s)
 	}
 	return true;
 }
+//////////////////////////////////////////////////////////////////////////////////
+//	AfficherMenu
+//	Intrants: aucun
+//  Extrants: aucun
+//	Description: Permet d'afficher le menu principal du programme
+//////////////////////////////////////////////////////////////////////////////////
 void AfficherMenu()
 {
 	// AfficherStringLine();
@@ -46,7 +58,12 @@ void AfficherMenu()
 		 << "5. Afficher la file d'attente en entier" << endl
 		 << "6. Quitter le programme" << endl;
 }
-
+//////////////////////////////////////////////////////////////////////////////////
+//	AfficherChoixSection
+//	Intrants: aucun
+//  Extrants: void
+//	Description: Permet d'afficher le menu de Choix de sections
+//////////////////////////////////////////////////////////////////////////////////
 void AfficherChoixSection()
 {
 	cout << "------------------------ -------------------------" << endl
@@ -60,6 +77,13 @@ void AfficherChoixSection()
 		 << "6. Les terrasses" << endl
 		 << "7. Terrasse fumeur" << endl;
 }
+//////////////////////////////////////////////////////////////////////////////////
+//	AjouterClient
+//	Intrants: maFile(FileAttente&)
+//  Extrants: void
+//	Description: Permet d'effectuer l'ensemble de fonction permettant d'ajouter un Client
+//				 à la file d'attente.
+//////////////////////////////////////////////////////////////////////////////////
 void AjouterClient(FileAttente& maFile)
 {
 	int choixSection=0;
@@ -71,19 +95,26 @@ void AjouterClient(FileAttente& maFile)
 		 << "-------------------------" << endl
 		 << "Donnez le nom du client: " << endl;
 	cin  >> nom;
-	while (!IsAlpha(nom))
+	while (!IsAlpha(nom)) //vérifie si le nom entré est constitué de lettres , sinon on redemande..
 		cin >> nom;
 
 	cout << "Donnez le nombre de personne dans ce groupe: " << endl;
 	cin  >> nbPersonnes;
 	system("cls");
 	cout << endl;
-	AfficherChoixSection();
+	AfficherChoixSection(); 
 	cin >> choixSection;
 	system("cls");
 	ClientEnAttente monClient(nom, nbPersonnes, choixSection);
 	maFile.Ajouter(monClient);
 }
+//////////////////////////////////////////////////////////////////////////////////
+//	AssignerTable
+//	Intrants: maFile(FileAttente&)
+//  Extrants: void
+//	Description: Enemble de fonctions permettant d'assigner un client à une table
+//				 et de le retirer de la file
+//////////////////////////////////////////////////////////////////////////////////
 void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
@@ -101,6 +132,12 @@ void AssignerTable(FileAttente& maFile)
 
 	cout << maFile.Retirer(nbPlacesTable, section, maFile).nom_ << " a été retiré" << endl;  ////ne fonctionne pas
 }
+//////////////////////////////////////////////////////////////////////////////////
+//	ClientPart
+//	Intrants: maFile(FileAttente&)
+//  Extrants: void
+//	Description: Permet de retirer un client de la file d'attente qui part, car il est tanné d'attendre
+//////////////////////////////////////////////////////////////////////////////////
 void ClientPart(FileAttente& maFile)
 {
 	string nomClientRetirer;
@@ -122,7 +159,12 @@ void ClientPart(FileAttente& maFile)
 	else
 		cout << nomClientRetirer << " n'a pas été trouvé" << endl;
 }
-
+//////////////////////////////////////////////////////////////////////////////////
+//	MessageQuitter
+//	Intrants: maFile(FileAttente&)
+//  Extrants: void
+//	Description: Afficher un message qui résume la file d'attente lorsque l'usager quitte
+//////////////////////////////////////////////////////////////////////////////////
 void MessageQuitter(FileAttente & maFile)
 {
 	system("cls");
@@ -133,7 +175,12 @@ void MessageQuitter(FileAttente & maFile)
 		<< "Nombre de personnes assignées à une table: " << maFile.GetNbPersonnesAssignes() << endl
 		<< "Nombre de groupes présents dans la file: " << maFile.GetNbGroupes() << endl;
 }
-
+//////////////////////////////////////////////////////////////////////////////////
+//	EffectuerChoix
+//	Intrants: choix(int), maFile(FileAttente&), quitter(bool&)
+//  Extrants: void
+//	Description: Permet d'effectuer le choix choisi par l'usager
+//////////////////////////////////////////////////////////////////////////////////
 void EffectuerChoix(int choix, FileAttente& maFile, bool& quitter)
 {
 	switch (choix)
