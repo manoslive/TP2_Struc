@@ -61,7 +61,7 @@ public:
 	//  Extrants:
 	//	Description: 
 	/////////////////////////////////////////////////////////////////
-	ClientEnAttente::Client Retirer(int nbPlacesDeLaTable, int sectionDeLaTable);
+	ClientEnAttente::Client Retirer(int nbPlacesDeLaTable, int sectionDeLaTable, FileAttente & maFile);
 	/////////////////////////////////////////////////////////////////
 	//	Ajouter
 	//	Intrants:			

@@ -47,7 +47,7 @@ void AjouterClient(FileAttente& maFile)
 	int choixSection=0;
 	string nom;
 	int nbPersonnes = 0;
-	//system("cls");
+
 	cout << "------------------------ " << endl
 		 << "¦    Ajout de client    ¦" << endl
 		 << "-------------------------" << endl
@@ -55,6 +55,7 @@ void AjouterClient(FileAttente& maFile)
 	cin  >> nom;
 	cout << "Donnez le nombre de personne dans ce groupe: " << endl;
 	cin  >> nbPersonnes;
+	system("cls");
 	cout << endl;
 	AfficherChoixSection();
 	cin >> choixSection;
@@ -65,7 +66,7 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
-	//system("cls");
+
 	cout << "-------------------------------------"<< endl
 		 << "¦  Assigner une table à un client   ¦"<< endl
 		 << "-------------------------------------"<< endl
@@ -76,15 +77,13 @@ void AssignerTable(FileAttente& maFile)
 	cin  >> section;
 	system("cls");
 
-	cout << maFile.Retirer(nbPlacesTable, section).nom_ << " a été retiré" << endl;  ////ne fonctionne pas
-	maFile.SetNbPersonnes(maFile.GetNbPersonnes() + nbPlacesTable);
-	maFile.SetNbGroupes(maFile.GetNbGroupesAssignes() + 1);
+	cout << maFile.Retirer(nbPlacesTable, section, maFile).nom_ << " a été retiré" << endl;  ////ne fonctionne pas
 }
 void ClientPart(FileAttente& maFile)
 {
 	string nomClientRetirer;
 	int nbPersonnes = 0;
-	//system("cls");
+
 	cout << "------------------------ " << endl
 		 << "¦   Retrait de client   ¦" << endl
 		 << "-------------------------" << endl
@@ -102,7 +101,7 @@ void ClientPart(FileAttente& maFile)
 
 void MessageQuitter(FileAttente & maFile)
 {
-	//system("cls");
+	system("cls");
 	cout << "--------------------------------" << endl
 		<< "¦   Récapitulatif de session   ¦" << endl
 		<< "--------------------------------" << endl
