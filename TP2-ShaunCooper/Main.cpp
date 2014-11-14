@@ -18,35 +18,44 @@ void AfficherStringLine()
 }
 void AfficherMenu()
 {
-	AfficherStringLine();
-	cout << "1. Ajouter un client dans la file" << endl
-		<< "2. Assigner une table" << endl
-		<< "3. Retirer un client qui quitte" << endl
-		<< "4. Afficher un client de la file" << endl
-		<< "5. Afficher la file d'attente en entier" << endl
-		<< "6. Quitter le programme" << endl;
+	// AfficherStringLine();
+	cout << "------------------------ ------" << endl
+		 << "¦    Restaurant chez Tunak    ¦" << endl
+		 << "-------------------------------" << endl
+		 << "Faites un choix parmi les suivants" << endl
+		 << "-----------------------------------" << endl
+		 << "1. Ajouter un client dans la file" << endl
+		 << "2. Assigner une table" << endl
+		 << "3. Retirer un client qui quitte" << endl
+		 << "4. Afficher un client de la file" << endl
+		 << "5. Afficher la file d'attente en entier" << endl
+		 << "6. Quitter le programme" << endl;
 }
 void AfficherChoixSection()
 {
-	//Choix de sections
-	cout << "1. Salle" << endl
-		<< "2. Salle et Terrasse" << endl
-		<< "3. Salle et TerrasseFumeur" << endl
-		<< "4. Salle, Terrasse et TerrasseFumeur" << endl
-		<< "5. Terrasse" << endl
-		<< "6. Terrasse et TerrasseFumeur" << endl
-		<< "7. TerrasseFumeur" << endl;
+	cout << "------------------------ -------------------------" << endl
+		 << "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
+		 << "--------------------------------------------------" << endl
+	     << "1. Salle" << endl
+		 << "2. Salle et Terrasse" << endl
+		 << "3. Salle et TerrasseFumeur" << endl
+		 << "4. Salle, Terrasse et TerrasseFumeur" << endl
+		 << "5. Terrasse" << endl
+		 << "6. Terrasse et TerrasseFumeur" << endl
+		 << "7. TerrasseFumeur" << endl;
 }
 void AjouterClient(FileAttente& maFile)
 {
 	int choixSection=0;
 	string nom;
 	int nbPersonnes = 0;
-
-	cout << "Donnez un nom: ";
-	cin >> nom;
-	cout << "Combien de personnes? : ";
-	cin >> nbPersonnes;
+	cout << "------------------------ " << endl
+		 << "¦    Ajout de client    ¦" << endl
+		 << "-------------------------" << endl
+		 << "Donnez le nom du client: " << endl;
+	cin  >> nom;
+	cout << "Donnez le nombre de personne dans ce groupe: ";
+	cin  >> nbPersonnes;
 	cout << endl;
 	AfficherChoixSection();
 	cin >> choixSection;
@@ -57,27 +66,33 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
-	cout << "Combien de places a cette table? ";
-	cin >> nbPlacesTable;
+	cout << "------------------------ ------------"
+		 << "¦  Assigner une table à un client   ¦"
+		 << "-------------------------------------"
+	     << "Combien de places a cette table? ";
+	cin  >> nbPlacesTable;
 	cout << endl << "Dans quelle section est-elle? " << endl;
 	AfficherChoixSection();
-	cin >> section;
+	cin  >> section;
 	cout << maFile.Retirer(nbPlacesTable, section).nom_ << "à été retiré" << endl;  ////tester...
 }
 void ClientPart(FileAttente& maFile)
 {
 	string nomClientRetirer;
 	int nbPersonnes = 0;
-	cout << "Nom du client à retirer: ";
-	cin >> nomClientRetirer;
+	cout << "------------------------ "
+		 << "¦   Retrait de client   ¦"
+		 << "-------------------------"
+	     << "Nom du client à retirer: ";
+	cin  >> nomClientRetirer;
 	cout << "Nombre de personnes?";
-	cin >> nbPersonnes;
+	cin  >> nbPersonnes;
 	maFile.Retirer(nomClientRetirer, nbPersonnes);
 }
 
 int main()
 {
-	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, ""); // Permet d'afficher les accents à la console
 	FileAttente maFile;
 	int choix = 0;
 	bool quitter = false;
@@ -87,41 +102,37 @@ int main()
 		{
 			AfficherMenu();
 			cin >> choix;
-
 			switch (choix)
 			{
 			case 1:
 				AjouterClient(maFile);
-				AfficherStringLine();
+				// AfficherStringLine();
 				break;
 			case 2:
 				AssignerTable(maFile);
-				AfficherStringLine();
+				//AfficherStringLine();
 				break;
 			case 3:
 				ClientPart(maFile);
-				AfficherStringLine();
+				//AfficherStringLine();
 				break;
 			case 4:
-			{
-
-			}
+				// À terminer
 				break;
 			case 5:
 				maFile.Afficher(cout);
-				cout << "Nombres de gorupes: " << maFile.ObtenirNbGroupes() << endl;
+				cout << "Nombres de groupes: " << maFile.ObtenirNbGroupes() << endl;
 				cout << "Nombres de personnes au total: " << maFile.ObtenirNbPersonnes() << endl;
-				AfficherStringLine();
+				//AfficherStringLine();
 				break;
 			case 6:
 				quitter = true;
 				break;
 			default:
-			{
 				cout << "Entrez un des choix suivants.." << endl;
 			}
-			}
-		} while (quitter == false);
+
+		} while (!quitter);
 	}
 	catch (exception e)
 	{
