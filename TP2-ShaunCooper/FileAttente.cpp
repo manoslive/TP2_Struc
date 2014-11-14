@@ -6,8 +6,9 @@
 //	FileAttente.cpp														    //
 //	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente //
 //----------------------------------------------------------------------------//
-// À faire : - terminer GetClient
+// À faire : - Terminer GetClient
 //			 - Arranger la recherche dans Retirer
+//			 - Ajouter l'affichage de la section dans Afficher
 
 
 #include "FileAttente.h"
@@ -171,7 +172,7 @@ bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 	//return pBalayage != nullptr;
 
 }
-void FileAttente::Afficher(ostream & out)
+void FileAttente::Afficher(ostream & out, FileAttente & maFile)
 {
 	ClientEnAttente *pTemporaire = GetPremier();
 	if (pTemporaire != nullptr)
@@ -186,8 +187,11 @@ void FileAttente::Afficher(ostream & out)
 	while (pTemporaire != nullptr)
 	{
 		out << "Nom: " + pTemporaire->GetNom() + "   " + "Nb Personnes: " << (pTemporaire->GetNombreDePersonnes()) << endl;
-		pTemporaire = pTemporaire->GetSuivant();
+		pTemporaire = pTemporaire->GetSuivant(); // Ajouter l'affichage de la section
 	}
+	cout << "--------------------------------" << endl
+	     << "Nombres de groupes: " << maFile.ObtenirNbGroupes() << endl
+	     << "Nombres de personnes au total: " << maFile.ObtenirNbPersonnes() << endl;
 	out << endl;
 }
 

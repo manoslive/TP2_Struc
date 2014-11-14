@@ -40,7 +40,7 @@ public:
 	void	Ajouter(ClientEnAttente clientAMettreEnFile);
 	ClientEnAttente::Client Retirer(int nbPlacesDeLaTable, int sectionDeLaTable);
 	bool	Retirer(string nomClient, int nbPersonnes);
-	void	Afficher(ostream & out);
+	void	Afficher(ostream & out, FileAttente & maFile);
 	void	AfficherClient(FileAttente& maFile) const;
 	string	GetClient(int indice);
 };
