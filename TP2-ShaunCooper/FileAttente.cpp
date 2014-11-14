@@ -233,13 +233,12 @@ void FileAttente::AfficherClient(FileAttente& maFile) const
 	cout << "Donnez la position dans la file du client dont vous voulez de l'information" << endl;
 	cin >> rang;
 	cout << "Le client #" << rang << ":" << endl << maFile.GetClient(rang);
-
 }
 
 string FileAttente::SectionEnString(int section)
 {
 	string sectionString = "";
-	switch (section)
+	switch (section) //switch qui permet d'associer une string décrivant une section à une section décrit en numéro
 	{
 	case 1:
 		sectionString = "Salle à manger";
@@ -269,16 +268,16 @@ string FileAttente::SectionEnString(int section)
 string FileAttente::GetClient(int indice)
 {
 	ClientEnAttente * clientARetourner = GetPremier();
-	int rang = 1;
+	int rang = 1; //rang dams la file d'attente initialisé à 1
 	string client;
 	stringstream ss;
 
-	while (clientARetourner != nullptr && rang != indice)
+	while (clientARetourner != nullptr && rang != indice) //pendant que clientARetourner est null et que rang n'et pas égale à l'indice..
 	{
-		clientARetourner = clientARetourner->GetSuivant();
-		rang++;
+		clientARetourner = clientARetourner->GetSuivant(); //on prendd le client suivant en ligne
+		rang++; //et on augemente le rang
 	}
-	if (clientARetourner == nullptr)
+	if (clientARetourner == nullptr) //si le client associé à l'indice est vide... la file est vide
 	{
 		throw exception("Erreur: La file d'attente est vide!");
 	}
