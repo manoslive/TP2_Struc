@@ -1,7 +1,6 @@
 /*
 	Shaun Cooper - Emmanuel Beloin
 	TP2 - File d'attente
-	dernière modification : 13-11-14
 	Main.cpp
 	Programme qui permet de gérer un file d'attente d'un restaurent
 */
@@ -56,9 +55,10 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
-	cout << "Nombre de places à la table?: ";
+	cout << "Combien de places a cette table? ";
 	cin >> nbPlacesTable;
-	cout << endl << "Nombre de personnes?";
+	cout << endl << "Dans quelle section est-elle? " << endl;
+	AfficherChoixSection();
 	cin >> section;
 	cout << maFile.Retirer(nbPlacesTable, section).nom_ << "à été retiré" << endl;  ////tester...
 }

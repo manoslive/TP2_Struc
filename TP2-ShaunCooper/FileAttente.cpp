@@ -3,7 +3,7 @@
 	TP2 - File d'attente
 	FileAttente.cpp
 	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente
-*/
+	*/
 #include "FileAttente.h"
 #include <sstream>
 
@@ -62,7 +62,7 @@ int FileAttente::ObtenirNbPersonnes()
 
 	while (pTemporaire != 0)
 	{
-		nbPersonnes = nbPersonnes+(pTemporaire->GetNombreDePersonnes());
+		nbPersonnes = nbPersonnes + (pTemporaire->GetNombreDePersonnes());
 		pTemporaire = pTemporaire->GetSuivant();
 	}
 
@@ -70,7 +70,7 @@ int FileAttente::ObtenirNbPersonnes()
 }
 void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 {
-	ClientEnAttente * pNouveau = new ClientEnAttente(clientAMettreEnFile.GetNom(),clientAMettreEnFile.GetNombreDePersonnes(),clientAMettreEnFile.GetSection());
+	ClientEnAttente * pNouveau = new ClientEnAttente(clientAMettreEnFile.GetNom(), clientAMettreEnFile.GetNombreDePersonnes(), clientAMettreEnFile.GetSection());
 	if (EstVide())
 	{
 		SetPremier(pNouveau);
@@ -85,50 +85,93 @@ void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 }
 ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionDeLaTable)
 {
-	ClientEnAttente *pTemporaire = GetPremier();
-	bool trouver = false;
-	if (pTemporaire == 0)
-		throw exception("...La liste est vide...");
+	ClientEnAttente *clientAEnlever = GetPremier();
+	 bool trouver = false;
+
+	if (clientAEnlever == 0)
+		throw exception("Erreur: La file d'attente est vide!");
 
 	for (int i = nbPlacesDeLaTable; i > 0 && trouver != false; i--)
 	{
-		while (pTemporaire != nullptr && pTemporaire->GetNombreDePersonnes() != i && pTemporaire->GetSection() != sectionDeLaTable)
-			pTemporaire = pTemporaire->GetSuivant();
-
-		if (pTemporaire->GetNombreDePersonnes() != i && pTemporaire->GetSection() != sectionDeLaTable)
+		clientAEnlever = clientAEnlever->GetSuivant();
+		if (clientAEnlever->GetNombreDePersonnes() != i && clientAEnlever->GetSection() != sectionDeLaTable)
 			trouver = true;
 	}
 
 	if (!trouver)
-		throw exception("Aucun match");
+	throw exception("Aucun match"); // S'il ne trouve pas de match
 
-	ClientEnAttente unClient(pTemporaire->GetNom(), pTemporaire->GetNombreDePersonnes(), pTemporaire->GetSection());
-	
-	delete pTemporaire;
-	SetNbGroupes(ObtenirNbGroupes() - 1);
+	ClientEnAttente unClient(clientAEnlever->GetNom(), clientAEnlever->GetNombreDePersonnes(), clientAEnlever->GetSection()); // Copie des informations dans un client qui sera effacé lors de la fermeture de la méthode
+
+	Retirer(unClient.GetNom(), unClient.GetNombreDePersonnes()); // Ici on appelle la méthode qui va retirer le client de la file d'attente
+	// Je vais tenter d'appeler la méthode retirer avec bool au lieu de faire le delete et le count de groupe ici - manu
+	//delete pTemporaire;
+	//SetNbGroupes(ObtenirNbGroupes() - 1);
 
 	return unClient.InfoClient;
 }
-bool FileAttente::Retirer(string nomClient, int nbPersonnes)
+bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 {
-	ClientEnAttente *pBalayage = GetPremier();
+	ClientEnAttente *clientAEnlever = GetPremier();
+	bool clientTrouver = false;
 
-	while (pBalayage != nullptr && pBalayage->GetNom() != nomClient && pBalayage->GetNombreDePersonnes() != nbPersonnes) 
+	if (clientAEnlever == nullptr)
+		throw exception("Erreur: File d'attente vide!");
+
+	while (!clientTrouver)
 	{
-		pBalayage = pBalayage->GetSuivant();
-	}
-	if (pBalayage->GetNom() == nomClient && pBalayage->GetNombreDePersonnes() == nbPersonnes)
-		delete pBalayage;
+		if (clientAEnlever->GetNom() == nomDuClient && clientAEnlever->GetNombreDePersonnes() == nbPersonnes)
+		{
+			clientTrouver = true;
+			if (clientAEnlever->GetPrecedent() != nullptr) // Cas où il y a un client avant lui
+				clientAEnlever->GetPrecedent()->SetSuivant(clientAEnlever->GetPrecedent()); // On déplace le pointeur sur le précédent
+			else if (clientAEnlever->GetSuivant() != nullptr) // Cas où il y a un client après lui
+			{
+				clientAEnlever->GetSuivant()->SetPrecedent(nullptr); // On met le précédent à nul
+				SetPremier(clientAEnlever->GetSuivant()); // Le client suivant devient le premier client
+			}
+			else // Cas où il est seul dans la file
+			{
+				SetDernier(nullptr);
+				SetPremier(nullptr);
+			}
 
-	return pBalayage != nullptr;
+			if (clientAEnlever->GetSuivant() != nullptr) // Cas où il y a un client après lui
+				clientAEnlever->GetSuivant()->SetPrecedent(clientAEnlever->GetPrecedent());
+
+			else if (clientAEnlever->GetPrecedent() != nullptr) // Cas où il y a un client avant lui
+			{
+				clientAEnlever->GetPrecedent()->SetSuivant(nullptr);
+				SetDernier(clientAEnlever->GetPrecedent()); // On sait qu'on est au bout de la file donc on met le precedent en tant que dernier
+			}
+			delete clientAEnlever; // On retire le client assigné à une table
+			SetNbGroupes(GetNbGroupes() - 1); // On diminu le nombre de groupe de 1
+		}
+		else // Si le nom du client n'est pas le bon et que le nombre non plus, on passe au suivant
+		{
+			clientAEnlever = clientAEnlever->GetSuivant();
+		}
+	}
+	return clientTrouver; // On retourne le client retiré
+
+
+	//while (pBalayage != nullptr && pBalayage->GetNom() != nomClient && pBalayage->GetNombreDePersonnes() != nbPersonnes) 
+	//{
+	//	pBalayage = pBalayage->GetSuivant();
+	//}
+	//if (pBalayage->GetNom() == nomClient && pBalayage->GetNombreDePersonnes() == nbPersonnes)
+	//	delete pBalayage;
+
+	//return pBalayage != nullptr;
+
 }
 void FileAttente::Afficher(ostream & out)
 {
 	ClientEnAttente *pTemporaire = GetPremier();
 
-	while (pTemporaire != 0)
+	while (pTemporaire != nullptr)
 	{
-		out << "Nom: " + pTemporaire->GetNom() + "   "+ "Nb Personnes: " << (pTemporaire->GetNombreDePersonnes()) << endl;
+		out << "Nom: " + pTemporaire->GetNom() + "   " + "Nb Personnes: " << (pTemporaire->GetNombreDePersonnes()) << endl;
 		pTemporaire = pTemporaire->GetSuivant();
 	}
 	out << endl;
@@ -147,9 +190,9 @@ string FileAttente::GetClient(int indice)
 	}
 	if (pBalayage == nullptr)
 	{
-		
+
 	}
-	ss << pBalayage->GetNom() << (pBalayage->GetNombreDePersonnes()) <<(pBalayage->GetSection());
-	
+	ss << pBalayage->GetNom() << (pBalayage->GetNombreDePersonnes()) << (pBalayage->GetSection());
+
 	return Client;
 }

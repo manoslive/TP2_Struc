@@ -26,6 +26,8 @@ public:
 	int ObtenirNbPersonnes();
 	void SetNbGroupes(int nbGroupes);
 	void SetNbPersonnes(int nbPersonnes);
+	int GetNbGroupes() const { return nbGroupes_; };
+	int GetNbPersonnes() const { return nbPersonnes_; };
 
 	ClientEnAttente* GetPremier() const;
 	ClientEnAttente* GetDernier() const;
