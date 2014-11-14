@@ -6,6 +6,9 @@
 //	FileAttente.cpp														    //
 //	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente //
 //----------------------------------------------------------------------------//
+// À faire : - terminer GetClient
+//			 - Arranger la recherche dans Retirer
+
 
 #include "FileAttente.h"
 #include <sstream>
@@ -173,8 +176,12 @@ void FileAttente::Afficher(ostream & out)
 	ClientEnAttente *pTemporaire = GetPremier();
 	if (pTemporaire != nullptr)
 	{
-		cout << 
+		cout << "--------------------------- " << endl
+			<< "¦  Voici la file d'attente ¦" << endl
+			<< "-----------------------------" << endl;
 	}
+	else
+		cout << "La file d'attente est vide!" << endl;
 
 	while (pTemporaire != nullptr)
 	{
@@ -208,7 +215,7 @@ string FileAttente::GetClient(int indice)
 	}
 	if (pBalayage == nullptr)
 	{
-
+		// À terminer
 	}
 	ss << pBalayage->GetNom() << (pBalayage->GetNombreDePersonnes()) << (pBalayage->GetSection());
 
