@@ -89,7 +89,7 @@ void ClientPart(FileAttente& maFile)
 		 << "¦   Retrait de client   ¦" << endl
 		 << "-------------------------" << endl
 		 << "Nom du client à retirer: " << endl;
-	cin  >> nomClientRetirer;
+	cin >> nomClientRetirer;
 	cout << "Nombre de personnes?" << endl;
 	cin  >> nbPersonnes;
 	system("cls");
@@ -153,6 +153,13 @@ int main()
 		{
 			AfficherMenu();
 			cin >> choix;
+			while (cin.fail())
+			{
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Entrez un choix valide : ";
+				cin >> choix;
+			}
 			EffectuerChoix(choix,maFile,quitter);
 		} while (!quitter);
 		MessageQuitter(maFile);
