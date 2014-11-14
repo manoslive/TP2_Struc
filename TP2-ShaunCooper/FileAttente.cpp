@@ -34,7 +34,6 @@ int FileAttente::ObtenirNbGroupes()
 		nbGroupes++;
 		pTemporaire = pTemporaire->GetSuivant();
 	}
-
 	return nbGroupes;
 }
 void FileAttente::SetPremier(ClientEnAttente *pPremier)
@@ -55,11 +54,18 @@ ClientEnAttente* FileAttente::GetDernier() const
 }
 void FileAttente::SetNbGroupes(int nbGroupes)
 {
-	nbGroupes_ = nbGroupes;
+	if (nbGroupes > 0)
+		nbGroupes_ = nbGroupes;
+	else
+		throw exception("Erreur: Nombre de groupes invalides!");
+
 }
 void FileAttente::SetNbPersonnes(int nbPersonnes)
 {
-	nbPersonnes_ = nbPersonnes;
+	if (nbPersonnes > 0)
+		nbPersonnes_ = nbPersonnes;
+	else
+		throw exception("Erreur: Nombre de personne invalide dans le groupe!");
 }
 int FileAttente::ObtenirNbPersonnes()
 {
