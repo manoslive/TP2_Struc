@@ -50,23 +50,23 @@ public:
 
 	/////////////////////////////////////////////////////////////////
 	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	Intrants: ClientEnAttente clientAMettreEnFile	
+	//  Extrants: Aucun(void)
+	//	Description: Permet d'ajouter un client reçu en paramètre à la file d'attente 
 	/////////////////////////////////////////////////////////////////
 	void	Ajouter(ClientEnAttente clientAMettreEnFile);
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	Retirer
+	//	Intrants: nbPlacesDeLaTable(int), sectionDeLaTable(int), maFile(FileAttente &)		
+	//  Extrants: Client(ClientEnAttente::Client)
+	//	Description: Permet de retirer un client de la file qui est assigné à une table
 	/////////////////////////////////////////////////////////////////
 	ClientEnAttente::Client Retirer(int nbPlacesDeLaTable, int sectionDeLaTable, FileAttente & maFile);
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	Retirer
+	//	Intrants: nomClient(string), nbPersonnes(int)		
+	//  Extrants: bool
+	//	Description: Permet de retirer un client qui sort de la file
 	/////////////////////////////////////////////////////////////////
 	bool	Retirer(string nomClient, int nbPersonnes);
 	/////////////////////////////////////////////////////////////////
