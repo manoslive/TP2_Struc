@@ -130,16 +130,16 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 	ClientEnAttente *meilleurChoix = nullptr;
 	bool trouver = false;
 
-	if (clientAEnlever == nullptr)
+	if (clientAEnlever == nullptr) //si le pointeur qui contient le premier est vide.... la file est vide
 		throw exception("Erreur: La file d'attente est vide!");
 
-	for (int i = nbPlacesDeLaTable; i > 0 && !trouver; i--)
+	for (int i = nbPlacesDeLaTable; i > 0 && !trouver; i--) //parcours chaque disponibilité de nombres de places disponibles jusqua 0 et tant que trouver = false...
 	{
-		while (clientAEnlever != nullptr &&  !trouver)
+		while (clientAEnlever != nullptr &&  !trouver) //tant que clientAEnvlever n'est pas null et que trouver =false...
 		{
-			if (clientAEnlever->GetNombreDePersonnes() == i && clientAEnlever->GetSection() == sectionDeLaTable)
-			{
-				trouver = true;
+			if (clientAEnlever->GetNombreDePersonnes() == i && clientAEnlever->GetSection() == sectionDeLaTable)//si le nombres de personnes du Client est égale à la disponibilité 
+			{																									//et que la section choisi par le cliet est égale à la section disponible...
+				trouver = true; //la table est trouvé pour y assigner un client
 				meilleurChoix = clientAEnlever;
 			}
 			clientAEnlever = clientAEnlever->GetSuivant();
