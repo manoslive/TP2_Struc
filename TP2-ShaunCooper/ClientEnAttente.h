@@ -7,16 +7,6 @@
 //	Declaration d'un ClientEnAttente.										//
 //----------------------------------------------------------------------------//
 
-
-// Declaration d'un noeud. En l'occurence, le
-// noeud ne contient qu'une string comme element
-// d'information
-//
-// Modifier Noeud à ClientEnAttenete
-//
-// par Pierre Prud'homme, octobre 2014
-// Modifier par Shaun Cooper, novembre 2014
-//-------------------------------------------------
 #ifndef _CLIENTENATTENTE_H_
 #define _CLIENTENATTENTE_H_
 #include <iostream>
