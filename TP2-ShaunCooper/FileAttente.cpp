@@ -127,17 +127,23 @@ void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionDeLaTable)
 {
 	ClientEnAttente *clientAEnlever = GetPremier();
+	ClientEnAttente *meilleurChoix = nullptr;
 	bool trouver = false;
 
-	if (clientAEnlever == 0)
+	if (clientAEnlever == nullptr)
 		throw exception("Erreur: La file d'attente est vide!");
 
-	for (int i = nbPlacesDeLaTable; i > 0 && trouver != false; i--)
+	for (int i = nbPlacesDeLaTable; i > 0 && !trouver; i--)
 	{
-		if (clientAEnlever->GetNombreDePersonnes() != i && clientAEnlever->GetSection() != sectionDeLaTable)
-			trouver = true;
-
-		clientAEnlever = clientAEnlever->GetSuivant();
+		while (clientAEnlever != nullptr &&  !trouver)
+		{
+			if (clientAEnlever->GetNombreDePersonnes() == i && clientAEnlever->GetSection() == sectionDeLaTable)
+			{
+				trouver = true;
+				meilleurChoix = clientAEnlever;
+			}
+			clientAEnlever = clientAEnlever->GetSuivant();
+		}
 	}
 
 	if (!trouver)

@@ -67,6 +67,7 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
+	system("cls");
 	cout << "-------------------------------------"<< endl
 		 << "¦  Assigner une table à un client   ¦"<< endl
 		 << "-------------------------------------"<< endl
