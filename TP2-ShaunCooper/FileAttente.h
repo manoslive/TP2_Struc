@@ -51,4 +51,5 @@ public:
 	bool	EstVide();
 	int		ObtenirNbGroupes();
 	int		ObtenirNbPersonnes();
+	bool    Quitter();
 };

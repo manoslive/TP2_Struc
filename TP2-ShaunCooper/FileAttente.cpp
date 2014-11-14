@@ -7,8 +7,8 @@
 //	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente //
 //----------------------------------------------------------------------------//
 // À faire : - Arranger la recherche dans Retirer
-
-
+//			 - Gérer les personnes assignées aux tables
+//			 - Gérer les groupes assignées aux table
 
 #include "FileAttente.h"
 #include <sstream>
@@ -98,7 +98,7 @@ void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionDeLaTable)
 {
 	ClientEnAttente *clientAEnlever = GetPremier();
-	 bool trouver = false;
+	bool trouver = false;
 
 	if (clientAEnlever == 0)
 		throw exception("Erreur: La file d'attente est vide!");
@@ -111,7 +111,7 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 	}
 
 	if (!trouver)
-	throw exception("Aucun match"); // S'il ne trouve pas de match
+		throw exception("Aucun match"); // S'il ne trouve pas de match
 
 	ClientEnAttente unClient(clientAEnlever->GetNom(), clientAEnlever->GetNombreDePersonnes(), clientAEnlever->GetSection()); // Copie des informations dans un client qui sera effacé lors de la fermeture de la méthode
 
@@ -193,12 +193,12 @@ void FileAttente::Afficher(ostream & out, FileAttente & maFile)
 	{
 		out << "Nom: " + clientAfficher->GetNom() << endl
 			<< "Nb Personnes: " << clientAfficher->GetNombreDePersonnes() << endl
-			<< "Section: " << SectionEnString(clientAfficher->GetSection()) <<  endl;
+			<< "Section: " << SectionEnString(clientAfficher->GetSection()) << endl;
 		clientAfficher = clientAfficher->GetSuivant(); // Ajouter l'affichage de la section
 	}
 	cout << "--------------------------------" << endl
-	     << "Nombres de groupes: " << maFile.ObtenirNbGroupes() << endl
-	     << "Nombres de personnes au total: " << maFile.ObtenirNbPersonnes() << endl;
+		<< "Nombres de groupes: " << maFile.ObtenirNbGroupes() << endl
+		<< "Nombres de personnes au total: " << maFile.ObtenirNbPersonnes() << endl;
 	out << endl;
 }
 
@@ -207,7 +207,7 @@ void FileAttente::AfficherClient(FileAttente& maFile) const
 	int rang = 1; // Le rang dans la file d'attente
 
 	cout << "Donnez la position dans la file du client dont vous voulez de l'information" << endl;
-	cin  >> rang;
+	cin >> rang;
 	cout << "Le client #" << rang << ":" << endl << maFile.GetClient(rang);
 
 }
@@ -262,4 +262,18 @@ string FileAttente::GetClient(int indice)
 	ss << "Nom: " << clientARetourner->GetNom() << endl << "Nombre de personnes dans le groupe: " << (clientARetourner->GetNombreDePersonnes()) << endl << "Section du restaurant: " << (SectionEnString(clientARetourner->GetSection())) << endl;
 	client = ss.str();
 	return client;
+}
+
+bool FileAttente::Quitter()
+{
+	string quitter = "";
+	bool resultat = false;
+
+	cout << "Il reste des clients dans la file d'attente. Etes-vous certains de vouloir quitter? (o/n)" << endl;
+	cin >> quitter;
+
+	if (quitter == "o" || quitter == "O")
+		resultat = true;
+
+	return resultat;
 }

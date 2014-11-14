@@ -67,7 +67,7 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
-	cout << "------------------------ ------------"<< endl
+	cout << "-------------------------------------"<< endl
 		 << "¦  Assigner une table à un client   ¦"<< endl
 		 << "-------------------------------------"<< endl
 	     << "Combien de places a cette table? "<< endl;
@@ -93,6 +93,15 @@ void ClientPart(FileAttente& maFile)
 		cout << nomClientRetirer << " a été trouvé et retiré" << endl;
 	else
 		cout << nomClientRetirer << " n'a pas été trouvé" << endl;
+}
+
+void MessageQuitter(FileAttente & maFile)
+{
+	cout << "--------------------------------" << endl
+		 << "¦   Récapitulatif de session   ¦" << endl
+		 << "--------------------------------" << endl
+		 << endl
+		 << maFile.
 }
 
 int main()
@@ -129,12 +138,14 @@ int main()
 				//AfficherStringLine();
 				break;
 			case 6:
-				quitter = true;
+				if (maFile.GetNbGroupes() == 0)
+					quitter = maFile.Quitter();
 				break;
 			default:
 				cout << "Entrez un des choix suivants.." << endl;
 			}
 		} while (!quitter);
+		MessageQuitter(maFile);
 	}
 	catch (exception e)
 	{
