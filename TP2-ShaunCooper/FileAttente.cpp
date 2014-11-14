@@ -176,19 +176,18 @@ bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 				clientAEnlever->GetSuivant()->SetPrecedent(nullptr); // On met le précédent à nul
 				SetPremier(clientAEnlever->GetSuivant()); // Le client suivant devient le premier client
 			}
-			else // Cas où il est seul dans la file
-			{
-				SetDernier(nullptr);
-				SetPremier(nullptr);
-			}
-
-			if (clientAEnlever->GetSuivant() != nullptr) // Cas où il y a un client après lui
+			else if (clientAEnlever->GetSuivant() != nullptr) // Cas où il y a un client après lui
 				clientAEnlever->GetSuivant()->SetPrecedent(clientAEnlever->GetPrecedent());
 
 			else if (clientAEnlever->GetPrecedent() != nullptr) // Cas où il y a un client avant lui
 			{
 				clientAEnlever->GetPrecedent()->SetSuivant(nullptr);
 				SetDernier(clientAEnlever->GetPrecedent()); // On sait qu'on est au bout de la file donc on met le precedent en tant que dernier
+			}
+			else // Cas où il est seul dans la file
+			{
+				SetDernier(nullptr);
+				SetPremier(nullptr);
 			}
 			delete clientAEnlever; // On retire le client assigné à une table
 			SetNbGroupes(GetNbGroupes() - 1); // On diminu le nombre de groupe de 1
