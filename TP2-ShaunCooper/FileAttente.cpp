@@ -99,29 +99,29 @@ int FileAttente::ObtenirNbPersonnes()
 
 	while (leGroupe != nullptr) // S'il y a un groupe
 	{
-		nbPersonnesDansGroupe = nbPersonnesDansGroupe + (leGroupe->GetNombreDePersonnes());
-		leGroupe = leGroupe->GetSuivant();
+		nbPersonnesDansGroupe = nbPersonnesDansGroupe + (leGroupe->GetNombreDePersonnes()); // On ajoute au nombre total de personnes
+		leGroupe = leGroupe->GetSuivant(); // On passe au suivant
 	}
 
-	return nbPersonnesDansGroupe;
+	return nbPersonnesDansGroupe; // On retourne ce nombre
 }
 
 void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 {
-	ClientEnAttente * pNouveau = new ClientEnAttente(clientAMettreEnFile.GetNom(), clientAMettreEnFile.GetNombreDePersonnes(), clientAMettreEnFile.GetSection());
+	ClientEnAttente * clientAAjouter = new ClientEnAttente(clientAMettreEnFile.GetNom(), clientAMettreEnFile.GetNombreDePersonnes(), clientAMettreEnFile.GetSection()); // On creer un ClientEnAttente dans le tas
 	if (EstVide())
 	{
-		SetPremier(pNouveau);
-		SetDernier(pNouveau);
+		SetPremier(clientAAjouter); // On met le pointeur égal au pointeur nul
+		SetDernier(clientAAjouter); // ici aussi
 	}
 	else
 	{
-		pNouveau->SetPrecedent(GetDernier());
-		GetDernier()->SetSuivant(pNouveau);
-		SetDernier(pNouveau);
+		clientAAjouter->SetPrecedent(GetDernier()); // S'il n'est pas vide, on affecte le pointeur precedent au dernier 
+		GetDernier()->SetSuivant(clientAAjouter); // 
+		SetDernier(clientAAjouter);
 	}
-	SetNbGroupes(GetNbGroupes() + 1);
-	SetNbPersonnes(GetNbPersonnes() + clientAMettreEnFile.GetNombreDePersonnes());
+	SetNbGroupes(GetNbGroupes() + 1); // On ajoute 1 au nombre de groupe
+	SetNbPersonnes(GetNbPersonnes() + clientAMettreEnFile.GetNombreDePersonnes()); // On ajoute le nombre de personnes du groupe au combre total
 }
 
 ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionDeLaTable, FileAttente & maFile)
