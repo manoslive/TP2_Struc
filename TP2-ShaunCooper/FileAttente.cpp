@@ -29,7 +29,7 @@ int FileAttente::ObtenirNbGroupes()
 	ClientEnAttente *pTemporaire = GetPremier();
 	int nbGroupes = 0;
 
-	while (pTemporaire != 0)
+	while (pTemporaire != nullptr)
 	{
 		nbGroupes++;
 		pTemporaire = pTemporaire->GetSuivant();
@@ -66,7 +66,7 @@ int FileAttente::ObtenirNbPersonnes()
 	ClientEnAttente *pTemporaire = GetPremier();
 	int nbPersonnes = 0;
 
-	while (pTemporaire != 0)
+	while (pTemporaire != nullptr)
 	{
 		nbPersonnes = nbPersonnes + (pTemporaire->GetNombreDePersonnes());
 		pTemporaire = pTemporaire->GetSuivant();
