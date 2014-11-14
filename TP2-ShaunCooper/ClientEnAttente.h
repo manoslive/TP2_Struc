@@ -50,8 +50,5 @@ public:
     string GetNom() const;
 	int    GetNombreDePersonnes() const;
 	int    GetSection();
-
-	//--- Méthodes
-	void Afficher(ostream & out) const;
 };
 #endif

@@ -78,15 +78,3 @@ int ClientEnAttente::GetSection()
 {
 	return InfoClient.section;
 }
-
-void ClientEnAttente::Afficher(ostream & out) const
-{
-	ClientEnAttente *pTemporaire = GetPremier();
-
-	while (pTemporaire != nullptr)
-	{
-		out << "Nom: " + pTemporaire->GetNom() + "   " + "Nb Personnes: " << (pTemporaire->GetNombreDePersonnes()) << endl;
-		pTemporaire = pTemporaire->GetSuivant();
-	}
-	out << endl;
-}

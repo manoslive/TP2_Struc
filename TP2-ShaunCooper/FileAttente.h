@@ -25,21 +25,22 @@ public:
 	FileAttente();
 
 	bool EstVide();
-	int ObtenirNbGroupes();
-	int ObtenirNbPersonnes();
+	int  ObtenirNbGroupes();
+	int  ObtenirNbPersonnes();
 	void SetNbGroupes(int nbGroupes);
 	void SetNbPersonnes(int nbPersonnes);
-	int GetNbGroupes() const { return nbGroupes_; };
-	int GetNbPersonnes() const { return nbPersonnes_; };
+	int  GetNbGroupes() const { return nbGroupes_; };
+	int  GetNbPersonnes() const { return nbPersonnes_; };
 
 	ClientEnAttente* GetPremier() const;
 	ClientEnAttente* GetDernier() const;
 	void SetPremier(ClientEnAttente *pPremier);
 	void SetDernier(ClientEnAttente *pDernier);
 
-	void Ajouter(ClientEnAttente clientAMettreEnFile);
+	void	Ajouter(ClientEnAttente clientAMettreEnFile);
 	ClientEnAttente::Client Retirer(int nbPlacesDeLaTable, int sectionDeLaTable);
-	bool Retirer(string nomClient, int nbPersonnes);
-	void Afficher(ostream & out);
-	string GetClient(int indice);
+	bool	Retirer(string nomClient, int nbPersonnes);
+	void	Afficher(ostream & out);
+	void	AfficherClient(FileAttente& maFile) const;
+	string	GetClient(int indice);
 };

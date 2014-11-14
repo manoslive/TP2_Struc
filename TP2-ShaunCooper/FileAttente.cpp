@@ -171,6 +171,10 @@ bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 void FileAttente::Afficher(ostream & out)
 {
 	ClientEnAttente *pTemporaire = GetPremier();
+	if (pTemporaire != nullptr)
+	{
+		cout << 
+	}
 
 	while (pTemporaire != nullptr)
 	{
@@ -179,6 +183,17 @@ void FileAttente::Afficher(ostream & out)
 	}
 	out << endl;
 }
+
+void FileAttente::AfficherClient(FileAttente& maFile) const
+{
+	int rang = 0; // Le rang dans la file d'attente
+
+	cout << "Donnez la position dans la file du client dont vous voulez de l'information";
+	cin  >> rang;
+	cout << "Le client: " << "#" << rang << " est " << maFile.GetClient(rang);
+
+}
+
 string FileAttente::GetClient(int indice)
 {
 	ClientEnAttente * pBalayage = GetPremier();

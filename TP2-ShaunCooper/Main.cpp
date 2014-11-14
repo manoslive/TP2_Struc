@@ -90,6 +90,13 @@ void ClientPart(FileAttente& maFile)
 	(maFile.Retirer(nomClientRetirer, nbPersonnes)) ? nomClientRetirer + " a été trouvé et retiré" : nomClientRetirer + " n'a pas été trouvé";
 }
 
+void AfficherFileAttente(FileAttente& maFile)
+{
+	cout << "------------------------ " << endl
+		<< "¦   Retrait de client   ¦" << endl
+		<< "-------------------------" << endl;
+}
+
 int main()
 {
 	setlocale(LC_ALL, ""); // Permet d'afficher les accents à la console
@@ -117,7 +124,7 @@ int main()
 				//AfficherStringLine();
 				break;
 			case 4:
-				// À terminer
+				maFile.AfficherClient(maFile);
 				break;
 			case 5:
 				maFile.Afficher(cout);
