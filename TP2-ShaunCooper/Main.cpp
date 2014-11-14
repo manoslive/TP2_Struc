@@ -66,10 +66,10 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
-	cout << "------------------------ ------------"
-		 << "¦  Assigner une table à un client   ¦"
-		 << "-------------------------------------"
-	     << "Combien de places a cette table? ";
+	cout << "------------------------ ------------"<< endl
+		 << "¦  Assigner une table à un client   ¦"<< endl
+		 << "-------------------------------------"<< endl
+	     << "Combien de places a cette table? "<< endl;
 	cin  >> nbPlacesTable;
 	cout << endl << "Dans quelle section est-elle? " << endl;
 	AfficherChoixSection();
@@ -80,14 +80,14 @@ void ClientPart(FileAttente& maFile)
 {
 	string nomClientRetirer;
 	int nbPersonnes = 0;
-	cout << "------------------------ "
-		 << "¦   Retrait de client   ¦"
-		 << "-------------------------"
+	cout << "------------------------ " << endl
+		 << "¦   Retrait de client   ¦" << endl
+		 << "-------------------------" << endl
 	     << "Nom du client à retirer: ";
 	cin  >> nomClientRetirer;
 	cout << "Nombre de personnes?";
 	cin  >> nbPersonnes;
-	maFile.Retirer(nomClientRetirer, nbPersonnes);
+	(maFile.Retirer(nomClientRetirer, nbPersonnes)) ? nomClientRetirer + " a été trouvé et retiré" : nomClientRetirer + " n'a pas été trouvé";
 }
 
 int main()
