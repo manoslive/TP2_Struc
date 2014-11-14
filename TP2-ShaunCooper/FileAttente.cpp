@@ -94,7 +94,7 @@ void FileAttente::SetNbPersonnesAssignes(int nbPersonnesAssignes)
 
 int FileAttente::ObtenirNbPersonnes()
 {
-	ClientEnAttente *leGroupe = GetPremier();
+	ClientEnAttente *leGroupe = GetPremier(); 
 	int nbPersonnesDansGroupe = 0;
 
 	while (leGroupe != nullptr)
