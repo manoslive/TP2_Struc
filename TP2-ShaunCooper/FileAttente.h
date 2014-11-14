@@ -70,31 +70,31 @@ public:
 	/////////////////////////////////////////////////////////////////
 	bool	Retirer(string nomClient, int nbPersonnes);
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	Afficher
+	//	Intrants: out(ostream &), maFile(FileAttente &)		
+	//  Extrants: void
+	//	Description: Permet d'afficher touts les éléments de la file à la console
 	/////////////////////////////////////////////////////////////////
 	void	Afficher(ostream & out, FileAttente & maFile);
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	AfficherClient
+	//	Intrants: maFile(FileAttente&)		
+	//  Extrants: void
+	//	Description: Permet d'afficher touts les éléments de un Client en file d'attente
 	/////////////////////////////////////////////////////////////////
 	void	AfficherClient(FileAttente& maFile) const;
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	GetClient
+	//	Intrants: indice(int)		
+	//  Extrants: string
+	//	Description: Renvoie le nom d'un client placé à l'indice dans la file d'attente
 	/////////////////////////////////////////////////////////////////
 	string	GetClient(int indice);
 	/////////////////////////////////////////////////////////////////
-	//	Ajouter
-	//	Intrants:			
-	//  Extrants:
-	//	Description: 
+	//	SectionEnString
+	//	Intrants: section(int)
+	//  Extrants: string
+	//	Description: Permet de dissocier la section(int) à la section en string
 	/////////////////////////////////////////////////////////////////
 	string  SectionEnString(int section);
 	/////////////////////////////////////////////////////////////////
