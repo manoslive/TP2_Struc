@@ -94,16 +94,16 @@ void FileAttente::SetNbPersonnesAssignes(int nbPersonnesAssignes)
 
 int FileAttente::ObtenirNbPersonnes()
 {
-	ClientEnAttente *pTemporaire = GetPremier();
-	int nbPersonnes = 0;
+	ClientEnAttente *leGroupe = GetPremier();
+	int nbPersonnesDansGroupe = 0;
 
-	while (pTemporaire != nullptr)
+	while (leGroupe != nullptr)
 	{
-		nbPersonnes = nbPersonnes + (pTemporaire->GetNombreDePersonnes());
-		pTemporaire = pTemporaire->GetSuivant();
+		nbPersonnesDansGroupe = nbPersonnesDansGroupe + (leGroupe->GetNombreDePersonnes());
+		leGroupe = leGroupe->GetSuivant();
 	}
 
-	return nbPersonnes;
+	return nbPersonnesDansGroupe;
 }
 
 void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
