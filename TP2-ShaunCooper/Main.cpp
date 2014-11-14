@@ -30,7 +30,7 @@ void AfficherMenu()
 }
 void AfficherChoixSection()
 {
-	system("cls");
+	//system("cls");
 	cout << "------------------------ -------------------------" << endl
 		 << "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
 		 << "--------------------------------------------------" << endl
@@ -47,7 +47,7 @@ void AjouterClient(FileAttente& maFile)
 	int choixSection=0;
 	string nom;
 	int nbPersonnes = 0;
-	system("cls");
+	//system("cls");
 	cout << "------------------------ " << endl
 		 << "¦    Ajout de client    ¦" << endl
 		 << "-------------------------" << endl
@@ -65,7 +65,7 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
-	system("cls");
+	//system("cls");
 	cout << "-------------------------------------"<< endl
 		 << "¦  Assigner une table à un client   ¦"<< endl
 		 << "-------------------------------------"<< endl
@@ -74,7 +74,9 @@ void AssignerTable(FileAttente& maFile)
 	cout << endl << "Dans quelle section est-elle? " << endl;
 	AfficherChoixSection();
 	cin  >> section;
-	cout << maFile.Retirer(nbPlacesTable, section).nom_ << "à été retiré" << endl;  ////ne fonctionne pas
+	system("cls");
+
+	cout << maFile.Retirer(nbPlacesTable, section).nom_ << " a été retiré" << endl;  ////ne fonctionne pas
 	maFile.SetNbPersonnes(maFile.GetNbPersonnes() + nbPlacesTable);
 	maFile.SetNbGroupes(maFile.GetNbGroupesAssignes() + 1);
 }
@@ -82,7 +84,7 @@ void ClientPart(FileAttente& maFile)
 {
 	string nomClientRetirer;
 	int nbPersonnes = 0;
-	system("cls");
+	//system("cls");
 	cout << "------------------------ " << endl
 		 << "¦   Retrait de client   ¦" << endl
 		 << "-------------------------" << endl
@@ -90,6 +92,7 @@ void ClientPart(FileAttente& maFile)
 	cin  >> nomClientRetirer;
 	cout << "Nombre de personnes?" << endl;
 	cin  >> nbPersonnes;
+	system("cls");
 	
 	if (maFile.Retirer(nomClientRetirer, nbPersonnes))
 		cout << nomClientRetirer << " a été trouvé et retiré" << endl;
@@ -99,7 +102,7 @@ void ClientPart(FileAttente& maFile)
 
 void MessageQuitter(FileAttente & maFile)
 {
-	system("cls");
+	//system("cls");
 	cout << "--------------------------------" << endl
 		<< "¦   Récapitulatif de session   ¦" << endl
 		<< "--------------------------------" << endl
@@ -118,7 +121,7 @@ int main()
 	{
 		do
 		{
-			system("cls");
+			//system("cls");
 			AfficherMenu();
 			cin >> choix;
 			switch (choix)
