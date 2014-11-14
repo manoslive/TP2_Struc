@@ -121,6 +121,7 @@ int main()
 	{
 		do
 		{
+			system("cls");
 			AfficherMenu();
 			cin >> choix;
 			switch (choix)
