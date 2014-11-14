@@ -13,10 +13,6 @@
 #include <iostream>
 using namespace std;
 
-void AfficherStringLine()
-{
-	cout << string(70, '-') << endl << endl;
-}
 void AfficherMenu()
 {
 	// AfficherStringLine();
@@ -129,22 +125,18 @@ int main()
 			{
 			case 1:
 				AjouterClient(maFile);
-				// AfficherStringLine();
 				break;
 			case 2:
 				AssignerTable(maFile);
-				//AfficherStringLine();
 				break;
 			case 3:
 				ClientPart(maFile);
-				//AfficherStringLine();
 				break;
 			case 4:
 				maFile.AfficherClient(maFile);
 				break;
 			case 5:
 				maFile.Afficher(cout, maFile);
-				//AfficherStringLine();
 				break;
 			case 6:
 				if (maFile.GetNbGroupes() != 0)
