@@ -7,8 +7,6 @@
 //	Définitions des fonctions permettant de gérer plusieurs ClientEnAttente //
 //----------------------------------------------------------------------------//
 // À faire : - Arranger la recherche dans Retirer
-//			 - Gérer les personnes assignées aux tables
-//			 - Gérer les groupes assignées aux table
 
 #include "FileAttente.h"
 #include <sstream>
@@ -19,11 +17,15 @@ FileAttente::FileAttente()
 	SetDernier(nullptr);
 	SetNbGroupes(0);
 	SetNbPersonnes(0);
+	SetNbGroupesAssignes(0);
+	SetNbPersonnesAssignes(0);
 }
+
 bool FileAttente::EstVide()
 {
 	return GetPremier() == nullptr;
 }
+
 int FileAttente::ObtenirNbGroupes()
 {
 	ClientEnAttente *pTemporaire = GetPremier();
@@ -36,41 +38,47 @@ int FileAttente::ObtenirNbGroupes()
 	}
 	return nbGroupes;
 }
+
 void FileAttente::SetPremier(ClientEnAttente *pPremier)
 {
 	pPremierClient_ = pPremier;
 }
+
 void FileAttente::SetDernier(ClientEnAttente *pDernier)
 {
 	pDernierClient_ = pDernier;
 }
+
 ClientEnAttente* FileAttente::GetPremier() const
 {
 	return pPremierClient_;
 }
+
 ClientEnAttente* FileAttente::GetDernier() const
 {
 	return pDernierClient_;
 }
+
 void FileAttente::SetNbGroupes(int nbGroupes)
 {
-	if (nbGroupes > 0)
+	if (nbGroupes >= 0)
 		nbGroupes_ = nbGroupes;
 	else
 		throw exception("Erreur: Nombre de groupes invalides!");
 
 }
+
 void FileAttente::SetNbPersonnes(int nbPersonnes)
 {
-	if (nbPersonnes > 0)
+	if (nbPersonnes >= 0)
 		nbPersonnes_ = nbPersonnes;
 	else
-		throw exception("Erreur: Nombre de personne invalide dans le groupe!");
+		throw exception("Erreur: Nombre de personnes invalides dans le groupe!");
 }
 
 void FileAttente::SetNbGroupesAssignes(int nbGroupesAssignes)
 {
-	if (nbGroupesAssignes > 0)
+	if (nbGroupesAssignes >= 0)
 		nbGroupesAssignes_ = nbGroupesAssignes;
 	else
 		throw exception("Erreur: Nombre de groupes assignés invalide!");
@@ -78,7 +86,7 @@ void FileAttente::SetNbGroupesAssignes(int nbGroupesAssignes)
 
 void FileAttente::SetNbPersonnesAssignes(int nbPersonnesAssignes)
 {
-	if (nbPersonnesAssignes > 0)
+	if (nbPersonnesAssignes >= 0)
 		nbPersonnesAssignes_ = nbPersonnesAssignes;
 	else
 		throw exception("Erreur: Nombre de personnes assignés invalide!");
@@ -97,6 +105,7 @@ int FileAttente::ObtenirNbPersonnes()
 
 	return nbPersonnes;
 }
+
 void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 {
 	ClientEnAttente * pNouveau = new ClientEnAttente(clientAMettreEnFile.GetNom(), clientAMettreEnFile.GetNombreDePersonnes(), clientAMettreEnFile.GetSection());
@@ -112,6 +121,7 @@ void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 		SetDernier(pNouveau);
 	}
 }
+
 ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionDeLaTable)
 {
 	ClientEnAttente *clientAEnlever = GetPremier();
@@ -139,6 +149,7 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 
 	return unClient.InfoClient;
 }
+
 bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 {
 	ClientEnAttente *clientAEnlever = GetPremier();
@@ -194,6 +205,7 @@ bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 	//return pBalayage != nullptr;
 
 }
+
 void FileAttente::Afficher(ostream & out, FileAttente & maFile)
 {
 	ClientEnAttente *clientAfficher = GetPremier();

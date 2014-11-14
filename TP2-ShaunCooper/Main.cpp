@@ -100,10 +100,12 @@ void ClientPart(FileAttente& maFile)
 void MessageQuitter(FileAttente & maFile)
 {
 	cout << "--------------------------------" << endl
-		 << "¦   Récapitulatif de session   ¦" << endl
-		 << "--------------------------------" << endl
-		 << endl;
-		 // << maFile.
+		<< "¦   Récapitulatif de session   ¦" << endl
+		<< "--------------------------------" << endl
+		<< endl
+		<< "Nombre de groupes assignés à une table: " << maFile.GetNbGroupesAssignes()
+		<< "Nombre de personnes assignées à une table: " << maFile.GetNbPersonnesAssignes()
+		<< "Nombre de groupes présents dans la file: " << maFile.GetNbGroupes();
 }
 
 int main()
@@ -140,8 +142,10 @@ int main()
 				//AfficherStringLine();
 				break;
 			case 6:
-				if (maFile.GetNbGroupes() == 0)
+				if (maFile.GetNbGroupes() != 0)
 					quitter = maFile.Quitter();
+				else
+					quitter = true;
 				break;
 			default:
 				cout << "Entrez un des choix suivants.." << endl;
