@@ -185,22 +185,22 @@ void EffectuerChoix(int choix, FileAttente& maFile, bool& quitter)
 {
 	switch (choix)
 	{
-	case 1:
+	case 1: //Ajouter un client dans la file
 		AjouterClient(maFile);
 		break;
-	case 2:
+	case 2: //Assigner une table
 		AssignerTable(maFile);
 		break;
-	case 3:
+	case 3: //Retirer un client qui quitte
 		ClientPart(maFile);
 		break;
-	case 4:
+	case 4: //Peu importe la section
 		maFile.AfficherClient(maFile);
 		break;
-	case 5:
+	case 5: //Terrasse non fumeur
 		maFile.Afficher(cout, maFile);
 		break;
-	case 6:
+	case 6: //quitter le programme
 		if (maFile.GetNbGroupes() != 0)
 			quitter = maFile.Quitter();
 		else
@@ -216,24 +216,24 @@ int main()
 {
 	setlocale(LC_ALL, ""); // Permet d'afficher les accents à la console
 	FileAttente maFile;
-	int choix = 0;
-	bool quitter = false;
+	int choix = 0; //choix du menu principale
+	bool quitter = false; //bool qui permet de savoir si le choix quitter à été choisi
 	try
 	{
 		do
 		{
-			AfficherMenu();
-			cin >> choix;
-			while (cin.fail())
+			AfficherMenu(); //affiche le menu principale
+			cin >> choix; 
+			while (cin.fail()) //boucle qui permet de gérer le cas du cin qui fail
 			{
 				cin.clear();
 				cin.ignore(1000, '\n');
 				cout << "Entrez un choix valide : ";
 				cin >> choix;
 			}
-			EffectuerChoix(choix,maFile,quitter);
-		} while (!quitter);
-		MessageQuitter(maFile);
+			EffectuerChoix(choix,maFile,quitter); //effectu le choix entré par l'usager
+		} while (!quitter); //continu de tourner dans la boulcle tant que quitté==false
+		MessageQuitter(maFile); //affiche le message finale qui résume la file d'attente
 	}
 	catch (exception e)
 	{
