@@ -7,6 +7,7 @@
 //	Déclaration d'une file d'attente qui sert à gérer plusieurs 			//
 //  ClientEnAttente															//
 //----------------------------------------------------------------------------//
+// À faire : - Mettre de l'ordre ici
 
 #pragma once
 #include "ClientEnAttente.h"
@@ -43,4 +44,5 @@ public:
 	void	Afficher(ostream & out, FileAttente & maFile);
 	void	AfficherClient(FileAttente& maFile) const;
 	string	GetClient(int indice);
+	string  SectionEnString(int section);
 };

@@ -6,6 +6,7 @@
 //	Main.cpp															    //
 //	Programme qui permet de gérer un file d'attente d'un restaurent         //
 //----------------------------------------------------------------------------//
+// À faire : - Assigner table (choix #2) ne fonctionne pas
 
 #include "ClientEnAttente.h"
 #include "FileAttente.h"
@@ -36,13 +37,13 @@ void AfficherChoixSection()
 	cout << "------------------------ -------------------------" << endl
 		 << "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
 		 << "--------------------------------------------------" << endl
-	     << "1. Salle" << endl
-		 << "2. Salle et Terrasse" << endl
-		 << "3. Salle et TerrasseFumeur" << endl
-		 << "4. Salle, Terrasse et TerrasseFumeur" << endl
-		 << "5. Terrasse" << endl
-		 << "6. Terrasse et TerrasseFumeur" << endl
-		 << "7. TerrasseFumeur" << endl;
+	     << "1. Salle à manger" << endl
+		 << "2. Salle à manger et terrasse non fumeur" << endl
+		 << "3. Salle à manger et terrasse fumeur" << endl
+		 << "4. Peu importe la section" << endl
+		 << "5. Terrasse non fumeur" << endl
+		 << "6. Les terrasses" << endl
+		 << "7. Terrasse fumeur" << endl;
 }
 void AjouterClient(FileAttente& maFile)
 {
@@ -74,7 +75,7 @@ void AssignerTable(FileAttente& maFile)
 	cout << endl << "Dans quelle section est-elle? " << endl;
 	AfficherChoixSection();
 	cin  >> section;
-	cout << maFile.Retirer(nbPlacesTable, section).nom_ << "à été retiré" << endl;  ////tester...
+	cout << maFile.Retirer(nbPlacesTable, section).nom_ << "à été retiré" << endl;  ////ne fonctionne pas
 }
 void ClientPart(FileAttente& maFile)
 {
@@ -87,7 +88,11 @@ void ClientPart(FileAttente& maFile)
 	cin  >> nomClientRetirer;
 	cout << "Nombre de personnes?" << endl;
 	cin  >> nbPersonnes;
-	(maFile.Retirer(nomClientRetirer, nbPersonnes)) ? nomClientRetirer + " a été trouvé et retiré" : nomClientRetirer + " n'a pas été trouvé";
+	
+	if (maFile.Retirer(nomClientRetirer, nbPersonnes))
+		cout << nomClientRetirer << " a été trouvé et retiré" << endl;
+	else
+		cout << nomClientRetirer << " n'a pas été trouvé" << endl;
 }
 
 int main()

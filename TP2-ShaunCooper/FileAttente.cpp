@@ -174,8 +174,8 @@ bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 }
 void FileAttente::Afficher(ostream & out, FileAttente & maFile)
 {
-	ClientEnAttente *pTemporaire = GetPremier();
-	if (pTemporaire != nullptr)
+	ClientEnAttente *clientAfficher = GetPremier();
+	if (clientAfficher != nullptr)
 	{
 		cout << "--------------------------- " << endl
 			<< "¦  Voici la file d'attente ¦" << endl
@@ -184,10 +184,12 @@ void FileAttente::Afficher(ostream & out, FileAttente & maFile)
 	else
 		cout << "La file d'attente est vide!" << endl;
 
-	while (pTemporaire != nullptr)
+	while (clientAfficher != nullptr)
 	{
-		out << "Nom: " + pTemporaire->GetNom() + "   " + "Nb Personnes: " << (pTemporaire->GetNombreDePersonnes()) << endl;
-		pTemporaire = pTemporaire->GetSuivant(); // Ajouter l'affichage de la section
+		out << "Nom: " + clientAfficher->GetNom() << endl
+			<< "Nb Personnes: " << clientAfficher->GetNombreDePersonnes() << endl
+			<< "Section: " << SectionEnString(clientAfficher->GetSection()) <<  endl;
+		clientAfficher = clientAfficher->GetSuivant(); // Ajouter l'affichage de la section
 	}
 	cout << "--------------------------------" << endl
 	     << "Nombres de groupes: " << maFile.ObtenirNbGroupes() << endl
@@ -201,8 +203,38 @@ void FileAttente::AfficherClient(FileAttente& maFile) const
 
 	cout << "Donnez la position dans la file du client dont vous voulez de l'information" << endl;
 	cin  >> rang;
-	cout << "Le client: " << "#" << rang << " est " << maFile.GetClient(rang);
+	cout << "Le client #" << rang << ":" << endl << maFile.GetClient(rang);
 
+}
+
+string FileAttente::SectionEnString(int section)
+{
+	string sectionString = "";
+	switch (section)
+	{
+	case 1:
+		sectionString = "Salle à manger";
+		break;
+	case 2:
+		sectionString = "Salle à manger et terrasse non fumeur";
+		break;
+	case 3:
+		sectionString = "Salle à manger et terrasse fumeur";
+		break;
+	case 4:
+		sectionString = "Peu importe la section";
+		break;
+	case 5:
+		sectionString = "Terrasse non fumeur";
+		break;
+	case 6:
+		sectionString = "Les terrasses";
+		break;
+	case 7:
+		sectionString = "Terrasse fumeur";
+		break;
+	}
+	return sectionString;
 }
 
 string FileAttente::GetClient(int indice)
@@ -222,7 +254,7 @@ string FileAttente::GetClient(int indice)
 		throw exception("Erreur: La file d'attente est vide!");
 	}
 
-	ss << clientARetourner->GetNom() << (clientARetourner->GetNombreDePersonnes()) << (clientARetourner->GetSection()) << endl;
+	ss << "Nom: " << clientARetourner->GetNom() << endl << "Nombre de personnes dans le groupe: " << (clientARetourner->GetNombreDePersonnes()) << endl << "Section du restaurant: " << (SectionEnString(clientARetourner->GetSection())) << endl;
 	client = ss.str();
 	return client;
 }
