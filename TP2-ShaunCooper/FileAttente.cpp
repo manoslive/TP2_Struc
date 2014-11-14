@@ -130,16 +130,16 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 	ClientEnAttente *meilleurChoix = nullptr;
 	bool trouver = false;
 
-	if (clientAEnlever == nullptr)
+	if (clientAEnlever == nullptr) //si le pointeur qui contient le premier est vide.... la file est vide
 		throw exception("Erreur: La file d'attente est vide!");
 
-	for (int i = nbPlacesDeLaTable; i > 0 && !trouver; i--)
+	for (int i = nbPlacesDeLaTable; i > 0 && !trouver; i--) //parcours chaque disponibilité de nombres de places disponibles jusqua 0 et tant que trouver = false...
 	{
-		while (clientAEnlever != nullptr &&  !trouver)
+		while (clientAEnlever != nullptr &&  !trouver) //tant que clientAEnvlever n'est pas null et que trouver =false...
 		{
-			if (clientAEnlever->GetNombreDePersonnes() == i && clientAEnlever->GetSection() == sectionDeLaTable)
-			{
-				trouver = true;
+			if (clientAEnlever->GetNombreDePersonnes() == i && clientAEnlever->GetSection() == sectionDeLaTable)//si le nombres de personnes du Client est égale à la disponibilité 
+			{																									//et que la section choisi par le cliet est égale à la section disponible...
+				trouver = true; //la table est trouvé pour y assigner un client
 				meilleurChoix = clientAEnlever;
 			}
 			clientAEnlever = clientAEnlever->GetSuivant();
@@ -233,13 +233,12 @@ void FileAttente::AfficherClient(FileAttente& maFile) const
 	cout << "Donnez la position dans la file du client dont vous voulez de l'information" << endl;
 	cin >> rang;
 	cout << "Le client #" << rang << ":" << endl << maFile.GetClient(rang);
-
 }
 
 string FileAttente::SectionEnString(int section)
 {
 	string sectionString = "";
-	switch (section)
+	switch (section) //switch qui permet d'associer une string décrivant une section à une section décrit en numéro
 	{
 	case 1:
 		sectionString = "Salle à manger";
@@ -269,16 +268,16 @@ string FileAttente::SectionEnString(int section)
 string FileAttente::GetClient(int indice)
 {
 	ClientEnAttente * clientARetourner = GetPremier();
-	int rang = 1;
+	int rang = 1; //rang dams la file d'attente initialisé à 1
 	string client;
 	stringstream ss;
 
-	while (clientARetourner != nullptr && rang != indice)
+	while (clientARetourner != nullptr && rang != indice) //pendant que clientARetourner est null et que rang n'et pas égale à l'indice..
 	{
-		clientARetourner = clientARetourner->GetSuivant();
-		rang++;
+		clientARetourner = clientARetourner->GetSuivant(); //on prendd le client suivant en ligne
+		rang++; //et on augemente le rang
 	}
-	if (clientARetourner == nullptr)
+	if (clientARetourner == nullptr) //si le client associé à l'indice est vide... la file est vide
 	{
 		throw exception("Erreur: La file d'attente est vide!");
 	}
