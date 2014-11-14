@@ -54,7 +54,7 @@ void AjouterClient(FileAttente& maFile)
 		 << "-------------------------" << endl
 		 << "Donnez le nom du client: " << endl;
 	cin  >> nom;
-	cout << "Donnez le nombre de personne dans ce groupe: ";
+	cout << "Donnez le nombre de personne dans ce groupe: "; << endl
 	cin  >> nbPersonnes;
 	cout << endl;
 	AfficherChoixSection();
@@ -83,9 +83,9 @@ void ClientPart(FileAttente& maFile)
 	cout << "------------------------ " << endl
 		 << "¦   Retrait de client   ¦" << endl
 		 << "-------------------------" << endl
-	     << "Nom du client à retirer: ";
+		 << "Nom du client à retirer: " << endl;
 	cin  >> nomClientRetirer;
-	cout << "Nombre de personnes?";
+	cout << "Nombre de personnes?" << endl;
 	cin  >> nbPersonnes;
 	(maFile.Retirer(nomClientRetirer, nbPersonnes)) ? nomClientRetirer + " a été trouvé et retiré" : nomClientRetirer + " n'a pas été trouvé";
 }
