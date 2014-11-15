@@ -218,6 +218,28 @@ int main()
 {
 	setlocale(LC_ALL, ""); // Permet d'afficher les accents à la console
 	FileAttente maFile;
+	// Ajouts de client pour les tests
+	ClientEnAttente a("Arthur", 4, 1);
+	maFile.Ajouter(a);
+
+	ClientEnAttente b("Benoit", 6, 7);
+	maFile.Ajouter(b);
+
+	ClientEnAttente c("Charles", 2, 3);
+	maFile.Ajouter(c);
+
+	ClientEnAttente d("Diane", 3, 7);
+	maFile.Ajouter(d);
+
+	ClientEnAttente e("Elise", 4, 6);
+	maFile.Ajouter(e);
+
+	ClientEnAttente f("Francis", 2, 5);
+	maFile.Ajouter(f);
+
+	ClientEnAttente g("Gaston", 8, 4);
+	maFile.Ajouter(g);
+
 	int choix = 0; //choix du menu principale
 	bool quitter = false; //bool qui permet de savoir si le choix quitter à été choisi
 	try
