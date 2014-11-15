@@ -6,7 +6,9 @@
 //	Main.cpp                                                                //
 //	Programme qui permet de gérer un file d'attente d'un restaurent         //
 //----------------------------------------------------------------------------//
-// À faire : - Mettre des commentaires
+// À faire : - Bug avec afficher la file d'attente
+//			 - Bug lorsqu'on retire ( on avait 2 possibilités dans la même 
+//			   et il n'a pas trouvé de match )
 
 #include "ClientEnAttente.h"
 #include "FileAttente.h"
@@ -155,9 +157,9 @@ void ClientPart(FileAttente& maFile)
 	system("cls");
 	
 	if (maFile.Retirer(nomClientRetirer, nbPersonnes))
-		cout << nomClientRetirer << " a été trouvé et retiré" << endl;
+		cout << nomClientRetirer << " a été trouvé(e) et retiré(e)" << endl;
 	else
-		cout << nomClientRetirer << " n'a pas été trouvé" << endl;
+		cout << nomClientRetirer << " n'a pas été trouvé(e)" << endl;
 }
 //////////////////////////////////////////////////////////////////////////////////
 //	MessageQuitter

@@ -292,7 +292,7 @@ bool FileAttente::Quitter()
 	string quitter = "";
 	bool resultat = false;
 
-	cout << "Il reste des clients dans la file d'attente. Etes-vous certains de vouloir quitter? (o/n)" << endl;
+	cout << "Il reste des clients dans la file d'attente. Etes-vous certain(e) de vouloir quitter? (o/n)" << endl;
 	cin >> quitter;
 
 	if (quitter == "o" || quitter == "O")
