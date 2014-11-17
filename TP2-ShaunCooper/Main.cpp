@@ -222,8 +222,8 @@ int main()
 	ClientEnAttente a("Arthur", 4, 1);
 	maFile.Ajouter(a);
 
-	ClientEnAttente b("Benoit", 6, 3);
-	maFile.Ajouter(b);
+	//ClientEnAttente b("Benoit", 6, 3);
+	//maFile.Ajouter(b);
 
 	ClientEnAttente c("Charles", 2, 6);
 	maFile.Ajouter(c);
@@ -237,7 +237,7 @@ int main()
 	ClientEnAttente f("Francis", 2, 2);
 	maFile.Ajouter(f);
 
-	ClientEnAttente g("Gaston", 8, 7);
+	ClientEnAttente g("Gabrielle", 1, 3);
 	maFile.Ajouter(g);
 
 	int choix = 0; //choix du menu principale

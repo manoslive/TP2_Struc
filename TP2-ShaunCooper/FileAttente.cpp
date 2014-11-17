@@ -116,8 +116,9 @@ void FileAttente::Ajouter(ClientEnAttente clientAMettreEnFile)
 	}
 	else
 	{
+
 		clientAAjouter->SetPrecedent(GetDernier()); // S'il n'est pas vide, on affecte le pointeur precedent au dernier 
-		GetDernier()->SetSuivant(clientAAjouter); // 
+		GetDernier()->SetSuivant(clientAAjouter);
 		SetDernier(clientAAjouter);
 	}
 	SetNbGroupes(GetNbGroupes() + 1); // On ajoute 1 au nombre de groupe
@@ -135,38 +136,39 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 
 	for (int i = nbPlacesDeLaTable; i > 0 && !trouver; i--) //parcours chaque disponibilité de nombres de places disponibles jusqua 0 et tant que trouver = false...
 	{
-		while (clientAEnlever != nullptr &&  !trouver) //tant que clientAEnvlever n'est pas null et que trouver =false...
+		while (clientAEnlever != nullptr &&  !trouver) //tant que clientAEnlever n'est pas null et que trouver = false...
 		{
-			if (clientAEnlever->GetNombreDePersonnes() == i /*&& clientAEnlever->GetSection() == sectionDeLaTable*/)//si le nombres de personnes du Client est égale à la disponibilité 
-			{																									//et que la section choisi par le cliet est égale à la section disponible...
+			if (clientAEnlever->GetNombreDePersonnes() == i) //si le nombres de personnes du Client est égale à la disponibilité 
+			{											     //et que la section choisi par le cliet est égale à la section disponible...
+				// FAIRE UNE MÉTHODE !!!!
 				switch (sectionDeLaTable)
 				{
 				case 1:
-					if (clientAEnlever->GetSection()== sectionDeLaTable)
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 5 || clientAEnlever->GetSection() == 6 || clientAEnlever->GetSection() == 7)
 						trouver = true;
 					break;
 				case 2:
-					if (clientAEnlever->GetSection() == sectionDeLaTable)
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 4 || clientAEnlever->GetSection() == 5 || clientAEnlever->GetSection() == 7)
 						trouver = true;
 					break;
 				case 3:
-					if (clientAEnlever->GetSection() == sectionDeLaTable)
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 4 || clientAEnlever->GetSection() == 6 || clientAEnlever->GetSection() == 7)
 						trouver = true;
 					break;
 				case 4:
-					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 3 || clientAEnlever->GetSection() == 2)
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 3 || clientAEnlever->GetSection() == 2 || clientAEnlever->GetSection() == 7)
 						trouver = true;
 					break;
 				case 5:
-					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 1 || clientAEnlever->GetSection() == 2)
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 1 || clientAEnlever->GetSection() == 2 || clientAEnlever->GetSection() == 7)
 						trouver = true;
 					break;
 				case 6:
-					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 1 || clientAEnlever->GetSection() == 3)
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 1 || clientAEnlever->GetSection() == 3 || clientAEnlever->GetSection() == 7)
 						trouver = true;
 					break;
 				case 7:
-						trouver = true;
+					trouver = true;
 					break;
 				}
 				meilleurChoix = clientAEnlever;
@@ -198,20 +200,20 @@ bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 		if (clientAEnlever->GetNom() == nomDuClient && clientAEnlever->GetNombreDePersonnes() == nbPersonnes)
 		{
 			clientTrouver = true;
-			if (clientAEnlever->GetPrecedent() != nullptr) // Cas où il y a un client avant lui
-				clientAEnlever->GetPrecedent()->SetSuivant(clientAEnlever->GetSuivant()); // On déplace le pointeur sur le précédent
-			else if (clientAEnlever->GetSuivant() != nullptr) // Cas où il y a un client après lui
+			if (clientAEnlever->GetPrecedent() == nullptr && clientAEnlever->GetSuivant() != nullptr)// Cas où il est le premier
 			{
-				clientAEnlever->GetSuivant()->SetPrecedent(nullptr); // On met le précédent à nul
-				SetPremier(clientAEnlever->GetSuivant()); // Le client suivant devient le premier client
+				clientAEnlever->GetSuivant()->SetPrecedent(nullptr);
+				SetPremier(clientAEnlever->GetSuivant());
 			}
-			else if (clientAEnlever->GetSuivant() != nullptr) // Cas où il y a un client après lui
+			else if (clientAEnlever->GetSuivant() != nullptr && clientAEnlever->GetPrecedent() != nullptr) // Cas où il est dans le milieu
+			{
+				clientAEnlever->GetPrecedent()->SetSuivant(clientAEnlever->GetSuivant());
 				clientAEnlever->GetSuivant()->SetPrecedent(clientAEnlever->GetPrecedent());
-
-			else if (clientAEnlever->GetPrecedent() != nullptr) // Cas où il y a un client avant lui
+			}
+			else if (clientAEnlever->GetPrecedent() != nullptr && clientAEnlever->GetSuivant() == nullptr) // Cas où il est le dernier
 			{
 				clientAEnlever->GetPrecedent()->SetSuivant(nullptr);
-				SetDernier(clientAEnlever->GetPrecedent()); // On sait qu'on est au bout de la file donc on met le precedent en tant que dernier
+				SetDernier(clientAEnlever->GetPrecedent());
 			}
 			else // Cas où il est seul dans la file
 			{
