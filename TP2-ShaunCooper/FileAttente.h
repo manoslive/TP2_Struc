@@ -127,4 +127,20 @@ public:
 	//				 quitter
 	/////////////////////////////////////////////////////////////////
 	bool    Quitter();
+	/////////////////////////////////////////////////////////////////
+	//	VerificationSection
+	//	Intrants:	 la section à vérifier (int)		
+	//  Extrants:	 un bool qui nous dit le client peut être assigné
+	//				 à la table
+	//	Description: Vérifie si le client peut être affecté à la 
+	//				 table
+	/////////////////////////////////////////////////////////////////
+	bool VerificationSection(int laSection, ClientEnAttente * clientAEnlever);
+	/////////////////////////////////////////////////////////////////
+	//	AjusterPointeurs
+	//	Intrants:	 le pointeur sur le client (ClientEnAttente*)		
+	//  Extrants:	 Aucun
+	//	Description: Ajuste les pointeurs après le retrait du client
+	/////////////////////////////////////////////////////////////////
+	void AjusterPointeurs(ClientEnAttente * clientAEnlever)
 };

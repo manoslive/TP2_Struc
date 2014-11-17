@@ -121,6 +121,7 @@ void AssignerTable(FileAttente& maFile)
 {
 	int nbPlacesTable = 0;
 	int section = 0;
+	string leNom = "";
 
 	cout << "-------------------------------------"<< endl
 		 << "¦  Assigner une table à un client   ¦"<< endl
@@ -132,7 +133,9 @@ void AssignerTable(FileAttente& maFile)
 	cin  >> section;
 	system("cls");
 
-	cout << maFile.Retirer(nbPlacesTable, section, maFile).nom_ << " a été retiré" << endl;  ////ne fonctionne pas
+	leNom = maFile.Retirer(nbPlacesTable, section, maFile).nom_;
+	if (leNom != "")
+		cout << leNom << " a été retiré" << endl;
 }
 //////////////////////////////////////////////////////////////////////////////////
 //	ClientPart
@@ -218,12 +221,14 @@ int main()
 {
 	setlocale(LC_ALL, ""); // Permet d'afficher les accents à la console
 	FileAttente maFile;
+
+	/////////////////////////////////////////////////////////////////////////////////////////
 	// Ajouts de client pour les tests
 	ClientEnAttente a("Arthur", 4, 1);
 	maFile.Ajouter(a);
 
-	//ClientEnAttente b("Benoit", 6, 3);
-	//maFile.Ajouter(b);
+	ClientEnAttente b("Benoit", 6, 3);
+	maFile.Ajouter(b);
 
 	ClientEnAttente c("Charles", 2, 6);
 	maFile.Ajouter(c);
@@ -237,8 +242,13 @@ int main()
 	ClientEnAttente f("Francis", 2, 2);
 	maFile.Ajouter(f);
 
-	ClientEnAttente g("Gabrielle", 1, 3);
+	ClientEnAttente g("Gaston", 8, 7);
 	maFile.Ajouter(g);
+
+	//ClientEnAttente g("Gabrielle", 1, 3);
+	//maFile.Ajouter(g);
+
+	////////////////////////////////////////////////////////////////////////////////
 
 	int choix = 0; //choix du menu principale
 	bool quitter = false; //bool qui permet de savoir si le choix quitter à été choisi
