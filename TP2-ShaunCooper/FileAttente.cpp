@@ -170,7 +170,7 @@ bool FileAttente::Retirer(string nomDuClient, int nbPersonnes)
 		{
 			clientTrouver = true;
 			if (clientAEnlever->GetPrecedent() != nullptr) // Cas où il y a un client avant lui
-				clientAEnlever->GetPrecedent()->SetSuivant(clientAEnlever->GetPrecedent()); // On déplace le pointeur sur le précédent
+				clientAEnlever->GetPrecedent()->SetSuivant(clientAEnlever->GetSuivant()); // On déplace le pointeur sur le précédent
 			else if (clientAEnlever->GetSuivant() != nullptr) // Cas où il y a un client après lui
 			{
 				clientAEnlever->GetSuivant()->SetPrecedent(nullptr); // On met le précédent à nul
