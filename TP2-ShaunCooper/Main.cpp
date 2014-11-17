@@ -68,16 +68,16 @@ void AfficherMenu()
 //////////////////////////////////////////////////////////////////////////////////
 void AfficherChoixSection()
 {
-	cout << "------------------------ -------------------------" << endl
-		 << "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
-		 << "--------------------------------------------------" << endl
-	     << "1. Salle à manger" << endl
-		 << "2. Salle à manger et terrasse non fumeur" << endl
-		 << "3. Salle à manger et terrasse fumeur" << endl
-		 << "4. Peu importe la section" << endl
-		 << "5. Terrasse non fumeur" << endl
-		 << "6. Les terrasses" << endl
-		 << "7. Terrasse fumeur" << endl;
+	cout << "-------------------------------------------------" << endl
+		<< "¦    Choisissez la/les section(s) désirée(s)    ¦" << endl
+		<< "--------------------------------------------------" << endl
+		<< "1. Salle à manger" << endl
+		<< "2. Terrasse non fumeur" << endl
+		<< "3. Terrasse fumeur" << endl
+		<< "4. Les terrasses" << endl
+		<< "5. Salle à manger et terrasse non fumeur" << endl
+		<< "6. Salle à manger et terrasse fumeur" << endl
+		<< "7. Peu importe la section" << endl;
 }
 //////////////////////////////////////////////////////////////////////////////////
 //	AjouterClient
@@ -222,22 +222,22 @@ int main()
 	ClientEnAttente a("Arthur", 4, 1);
 	maFile.Ajouter(a);
 
-	ClientEnAttente b("Benoit", 6, 7);
+	ClientEnAttente b("Benoit", 6, 3);
 	maFile.Ajouter(b);
 
-	ClientEnAttente c("Charles", 2, 3);
+	ClientEnAttente c("Charles", 2, 6);
 	maFile.Ajouter(c);
 
-	ClientEnAttente d("Diane", 3, 7);
+	ClientEnAttente d("Diane", 3, 3);
 	maFile.Ajouter(d);
 
-	ClientEnAttente e("Elise", 4, 6);
+	ClientEnAttente e("Elise", 4, 4);
 	maFile.Ajouter(e);
 
-	ClientEnAttente f("Francis", 2, 5);
+	ClientEnAttente f("Francis", 2, 2);
 	maFile.Ajouter(f);
 
-	ClientEnAttente g("Gaston", 8, 4);
+	ClientEnAttente g("Gaston", 8, 7);
 	maFile.Ajouter(g);
 
 	int choix = 0; //choix du menu principale

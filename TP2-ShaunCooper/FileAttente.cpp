@@ -137,9 +137,38 @@ ClientEnAttente::Client FileAttente::Retirer(int nbPlacesDeLaTable, int sectionD
 	{
 		while (clientAEnlever != nullptr &&  !trouver) //tant que clientAEnvlever n'est pas null et que trouver =false...
 		{
-			if (clientAEnlever->GetNombreDePersonnes() == i && clientAEnlever->GetSection() == sectionDeLaTable)//si le nombres de personnes du Client est égale à la disponibilité 
+			if (clientAEnlever->GetNombreDePersonnes() == i /*&& clientAEnlever->GetSection() == sectionDeLaTable*/)//si le nombres de personnes du Client est égale à la disponibilité 
 			{																									//et que la section choisi par le cliet est égale à la section disponible...
-				trouver = true; //la table est trouvé pour y assigner un client
+				switch (sectionDeLaTable)
+				{
+				case 1:
+					if (clientAEnlever->GetSection()== sectionDeLaTable)
+						trouver = true;
+					break;
+				case 2:
+					if (clientAEnlever->GetSection() == sectionDeLaTable)
+						trouver = true;
+					break;
+				case 3:
+					if (clientAEnlever->GetSection() == sectionDeLaTable)
+						trouver = true;
+					break;
+				case 4:
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 3 || clientAEnlever->GetSection() == 2)
+						trouver = true;
+					break;
+				case 5:
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 1 || clientAEnlever->GetSection() == 2)
+						trouver = true;
+					break;
+				case 6:
+					if (clientAEnlever->GetSection() == sectionDeLaTable || clientAEnlever->GetSection() == 1 || clientAEnlever->GetSection() == 3)
+						trouver = true;
+					break;
+				case 7:
+						trouver = true;
+					break;
+				}
 				meilleurChoix = clientAEnlever;
 			}
 			clientAEnlever = clientAEnlever->GetSuivant();
@@ -244,22 +273,22 @@ string FileAttente::SectionEnString(int section)
 		sectionString = "Salle à manger";
 		break;
 	case 2:
-		sectionString = "Salle à manger et terrasse non fumeur";
-		break;
-	case 3:
-		sectionString = "Salle à manger et terrasse fumeur";
-		break;
-	case 4:
-		sectionString = "Peu importe la section";
-		break;
-	case 5:
 		sectionString = "Terrasse non fumeur";
 		break;
-	case 6:
+	case 3:
+		sectionString = "Terrasse fumeur";
+		break;
+	case 4:
 		sectionString = "Les terrasses";
 		break;
+	case 5:
+		sectionString = "Salle à manger et terrasse non fumeur";
+		break;
+	case 6:
+		sectionString = "Salle à manger et terrasse fumeur";
+		break;
 	case 7:
-		sectionString = "Terrasse fumeur";
+		sectionString = "Toutes les sections";
 		break;
 	}
 	return sectionString;
